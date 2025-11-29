@@ -17,7 +17,10 @@ import { apiRequest } from "@/lib/queryClient";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { Calendar, Mail, Send, CheckCircle } from "lucide-react";
-import { insertContactSubmissionSchema, type InsertContactSubmission } from "@shared/schema";
+import {
+  insertContactSubmissionSchema,
+  type InsertContactSubmission,
+} from "@/lib/schema";
 import { z } from "zod";
 
 interface ContactProps {
@@ -78,15 +81,15 @@ export default function Contact({ calendarLink }: ContactProps) {
     <section
       id="contact"
       className="py-16 lg:py-24 bg-gradient-to-br from-background via-[hsl(190,100%,45%)]/5 to-primary/5"
-      data-testid="section-contact"
-    >
+      data-testid="section-contact">
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-12">
           <h2 className="text-3xl lg:text-4xl font-bold text-foreground mb-4">
             Get In <span className="text-primary">Touch</span>
           </h2>
           <p className="text-lg text-muted-foreground max-w-3xl mx-auto leading-relaxed">
-            Ready to transform your CRM strategy? Let's discuss how we can help your business grow.
+            Ready to transform your CRM strategy? Let's discuss how we can help
+            your business grow.
           </p>
         </div>
 
@@ -110,15 +113,21 @@ export default function Contact({ calendarLink }: ContactProps) {
                     Thank You!
                   </h3>
                   <p className="text-muted-foreground mb-6">
-                    Your message has been sent successfully. We'll get back to you soon.
+                    Your message has been sent successfully. We'll get back to
+                    you soon.
                   </p>
-                  <Button variant="outline" onClick={handleReset} data-testid="button-send-another">
+                  <Button
+                    variant="outline"
+                    onClick={handleReset}
+                    data-testid="button-send-another">
                     Send Another Message
                   </Button>
                 </div>
               ) : (
                 <Form {...form}>
-                  <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-4">
+                  <form
+                    onSubmit={form.handleSubmit(onSubmit)}
+                    className="space-y-4">
                     <FormField
                       control={form.control}
                       name="name"
@@ -199,8 +208,7 @@ export default function Contact({ calendarLink }: ContactProps) {
                       type="submit"
                       className="w-full"
                       disabled={submitMutation.isPending}
-                      data-testid="button-submit"
-                    >
+                      data-testid="button-submit">
                       {submitMutation.isPending ? (
                         "Sending..."
                       ) : (
@@ -228,11 +236,17 @@ export default function Contact({ calendarLink }: ContactProps) {
               </CardHeader>
               <CardContent>
                 <p className="text-muted-foreground mb-6 leading-relaxed">
-                  Prefer to talk directly? Schedule a consultation call at your 
+                  Prefer to talk directly? Schedule a consultation call at your
                   convenience. We'll discuss your needs and how we can help.
                 </p>
-                <Button asChild className="w-full" data-testid="button-schedule-contact">
-                  <a href={calendarLink} target="_blank" rel="noopener noreferrer">
+                <Button
+                  asChild
+                  className="w-full"
+                  data-testid="button-schedule-contact">
+                  <a
+                    href={calendarLink}
+                    target="_blank"
+                    rel="noopener noreferrer">
                     <Calendar className="w-4 h-4 mr-2" />
                     Book a Consultation
                   </a>
@@ -243,16 +257,21 @@ export default function Contact({ calendarLink }: ContactProps) {
             <Card className="border-[hsl(190,100%,45%)]/30 bg-gradient-to-br from-[hsl(190,100%,45%)]/10 to-transparent">
               <CardContent className="p-6">
                 <h3 className="text-lg font-semibold text-foreground mb-4">
-                  Why Choose <span className="text-primary">ConsultTech CRM</span>?
+                  Why Choose{" "}
+                  <span className="text-primary">ConsultTech CRM</span>?
                 </h3>
                 <ul className="space-y-3 text-sm text-muted-foreground">
                   <li className="flex items-start gap-2">
                     <CheckCircle className="w-4 h-4 text-primary mt-0.5 flex-shrink-0" />
-                    <span>Certified experts in Salesforce, StoreConnect & AWS</span>
+                    <span>
+                      Certified experts in Salesforce, StoreConnect & AWS
+                    </span>
                   </li>
                   <li className="flex items-start gap-2">
                     <CheckCircle className="w-4 h-4 text-primary mt-0.5 flex-shrink-0" />
-                    <span>Tailored solutions for your specific business needs</span>
+                    <span>
+                      Tailored solutions for your specific business needs
+                    </span>
                   </li>
                   <li className="flex items-start gap-2">
                     <CheckCircle className="w-4 h-4 text-primary mt-0.5 flex-shrink-0" />
@@ -260,7 +279,9 @@ export default function Contact({ calendarLink }: ContactProps) {
                   </li>
                   <li className="flex items-start gap-2">
                     <CheckCircle className="w-4 h-4 text-primary mt-0.5 flex-shrink-0" />
-                    <span>Proven track record of successful implementations</span>
+                    <span>
+                      Proven track record of successful implementations
+                    </span>
                   </li>
                 </ul>
               </CardContent>
