@@ -8,7 +8,7 @@ export default function AboutUsPage() {
   return (
     <div className="min-h-screen bg-background">
       <Navigation calendarLink={CALENDAR_LINK} />
-      <main className="pt-20">
+      <main className="pt-32">
         <AboutUs />
       </main>
       <Footer calendarLink={CALENDAR_LINK} />

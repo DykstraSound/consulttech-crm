@@ -25,7 +25,7 @@ export default function Footer({ calendarLink }: FooterProps) {
             <img
               src={logoImage}
               alt="ConsultTech CRM"
-              className="h-12 w-auto mb-4"
+              className="h-36 w-auto mb-4"
             />
             <p className="text-sm text-muted-foreground leading-relaxed">
               Expert CRM consulting services specializing in Salesforce, 

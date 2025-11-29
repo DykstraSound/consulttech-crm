@@ -8,7 +8,7 @@ export default function ContactPage() {
   return (
     <div className="min-h-screen bg-background">
       <Navigation calendarLink={CALENDAR_LINK} />
-      <main className="pt-20">
+      <main className="pt-32">
         <Contact calendarLink={CALENDAR_LINK} />
       </main>
       <Footer calendarLink={CALENDAR_LINK} />

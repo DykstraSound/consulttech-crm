@@ -39,7 +39,7 @@ export default function Navigation({ calendarLink }: NavigationProps) {
       data-testid="navigation"
     >
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex items-center justify-between h-20 gap-4">
+        <div className="flex items-center justify-between h-28 gap-4">
           <Link
             href="/"
             className="flex items-center gap-2"
@@ -48,7 +48,7 @@ export default function Navigation({ calendarLink }: NavigationProps) {
             <img
               src={logoImage}
               alt="ConsultTech CRM"
-              className="h-14 w-auto"
+              className="h-24 w-auto"
             />
           </Link>
 

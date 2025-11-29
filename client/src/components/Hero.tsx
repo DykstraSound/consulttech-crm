@@ -25,7 +25,7 @@ export default function Hero({ calendarLink }: HeroProps) {
         <img
           src={logoImage}
           alt="ConsultTech CRM"
-          className="h-32 md:h-40 w-auto mx-auto mb-8"
+          className="h-48 md:h-64 lg:h-80 w-auto mx-auto mb-8"
           data-testid="img-hero-logo"
         />
         
