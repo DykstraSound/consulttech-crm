@@ -3,25 +3,45 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
-import { Label } from "@/components/ui/label";
+import {
+  Form,
+  FormControl,
+  FormField,
+  FormItem,
+  FormLabel,
+  FormMessage,
+} from "@/components/ui/form";
 import { useToast } from "@/hooks/use-toast";
 import { useMutation } from "@tanstack/react-query";
 import { apiRequest } from "@/lib/queryClient";
+import { useForm } from "react-hook-form";
+import { zodResolver } from "@hookform/resolvers/zod";
 import { Calendar, Mail, Send, CheckCircle } from "lucide-react";
-import type { InsertContactSubmission } from "@shared/schema";
+import { insertContactSubmissionSchema, type InsertContactSubmission } from "@shared/schema";
+import { z } from "zod";
 
 interface ContactProps {
   calendarLink: string;
 }
 
+const contactFormSchema = insertContactSubmissionSchema.extend({
+  email: z.string().email("Please enter a valid email address"),
+  name: z.string().min(1, "Name is required"),
+  message: z.string().min(1, "Message is required"),
+});
+
 export default function Contact({ calendarLink }: ContactProps) {
   const { toast } = useToast();
   const [isSubmitted, setIsSubmitted] = useState(false);
-  const [formData, setFormData] = useState<InsertContactSubmission>({
-    name: "",
-    email: "",
-    company: "",
-    message: "",
+
+  const form = useForm<InsertContactSubmission>({
+    resolver: zodResolver(contactFormSchema),
+    defaultValues: {
+      name: "",
+      email: "",
+      company: "",
+      message: "",
+    },
   });
 
   const submitMutation = useMutation({
@@ -45,20 +65,12 @@ export default function Contact({ calendarLink }: ContactProps) {
     },
   });
 
-  const handleChange = (
-    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
-  ) => {
-    const { name, value } = e.target;
-    setFormData((prev) => ({ ...prev, [name]: value }));
-  };
-
-  const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault();
-    submitMutation.mutate(formData);
+  const onSubmit = (data: InsertContactSubmission) => {
+    submitMutation.mutate(data);
   };
 
   const handleReset = () => {
-    setFormData({ name: "", email: "", company: "", message: "" });
+    form.reset();
     setIsSubmitted(false);
   };
 
@@ -105,77 +117,101 @@ export default function Contact({ calendarLink }: ContactProps) {
                   </Button>
                 </div>
               ) : (
-                <form onSubmit={handleSubmit} className="space-y-4">
-                  <div className="space-y-2">
-                    <Label htmlFor="name">Name *</Label>
-                    <Input
-                      id="name"
+                <Form {...form}>
+                  <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-4">
+                    <FormField
+                      control={form.control}
                       name="name"
-                      value={formData.name}
-                      onChange={handleChange}
-                      placeholder="Your name"
-                      required
-                      data-testid="input-name"
+                      render={({ field }) => (
+                        <FormItem>
+                          <FormLabel>Name *</FormLabel>
+                          <FormControl>
+                            <Input
+                              placeholder="Your name"
+                              data-testid="input-name"
+                              {...field}
+                            />
+                          </FormControl>
+                          <FormMessage />
+                        </FormItem>
+                      )}
                     />
-                  </div>
 
-                  <div className="space-y-2">
-                    <Label htmlFor="email">Email *</Label>
-                    <Input
-                      id="email"
+                    <FormField
+                      control={form.control}
                       name="email"
-                      type="email"
-                      value={formData.email}
-                      onChange={handleChange}
-                      placeholder="your@email.com"
-                      required
-                      data-testid="input-email"
+                      render={({ field }) => (
+                        <FormItem>
+                          <FormLabel>Email *</FormLabel>
+                          <FormControl>
+                            <Input
+                              type="email"
+                              placeholder="your@email.com"
+                              data-testid="input-email"
+                              {...field}
+                            />
+                          </FormControl>
+                          <FormMessage />
+                        </FormItem>
+                      )}
                     />
-                  </div>
 
-                  <div className="space-y-2">
-                    <Label htmlFor="company">Company</Label>
-                    <Input
-                      id="company"
+                    <FormField
+                      control={form.control}
                       name="company"
-                      value={formData.company || ""}
-                      onChange={handleChange}
-                      placeholder="Your company name"
-                      data-testid="input-company"
+                      render={({ field }) => (
+                        <FormItem>
+                          <FormLabel>Company</FormLabel>
+                          <FormControl>
+                            <Input
+                              placeholder="Your company name"
+                              data-testid="input-company"
+                              {...field}
+                              value={field.value || ""}
+                            />
+                          </FormControl>
+                          <FormMessage />
+                        </FormItem>
+                      )}
                     />
-                  </div>
 
-                  <div className="space-y-2">
-                    <Label htmlFor="message">Message *</Label>
-                    <Textarea
-                      id="message"
+                    <FormField
+                      control={form.control}
                       name="message"
-                      value={formData.message}
-                      onChange={handleChange}
-                      placeholder="Tell us about your project or inquiry..."
-                      rows={4}
-                      required
-                      className="resize-none"
-                      data-testid="input-message"
+                      render={({ field }) => (
+                        <FormItem>
+                          <FormLabel>Message *</FormLabel>
+                          <FormControl>
+                            <Textarea
+                              placeholder="Tell us about your project or inquiry..."
+                              rows={4}
+                              className="resize-none"
+                              data-testid="input-message"
+                              {...field}
+                            />
+                          </FormControl>
+                          <FormMessage />
+                        </FormItem>
+                      )}
                     />
-                  </div>
 
-                  <Button
-                    type="submit"
-                    className="w-full"
-                    disabled={submitMutation.isPending}
-                    data-testid="button-submit"
-                  >
-                    {submitMutation.isPending ? (
-                      "Sending..."
-                    ) : (
-                      <>
-                        <Send className="w-4 h-4 mr-2" />
-                        Send Message
-                      </>
-                    )}
-                  </Button>
-                </form>
+                    <Button
+                      type="submit"
+                      className="w-full"
+                      disabled={submitMutation.isPending}
+                      data-testid="button-submit"
+                    >
+                      {submitMutation.isPending ? (
+                        "Sending..."
+                      ) : (
+                        <>
+                          <Send className="w-4 h-4 mr-2" />
+                          Send Message
+                        </>
+                      )}
+                    </Button>
+                  </form>
+                </Form>
               )}
             </CardContent>
           </Card>
