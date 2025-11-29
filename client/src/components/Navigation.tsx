@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import { Link, useLocation } from "wouter";
 import { Button } from "@/components/ui/button";
 import { Menu, X, Calendar } from "lucide-react";
 import logoImage from "@assets/ConsultTech Logo2 Transparent_1764386506741.png";
@@ -10,6 +11,7 @@ interface NavigationProps {
 export default function Navigation({ calendarLink }: NavigationProps) {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
+  const [location] = useLocation();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -19,20 +21,12 @@ export default function Navigation({ calendarLink }: NavigationProps) {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  const scrollToSection = (sectionId: string) => {
-    const element = document.getElementById(sectionId);
-    if (element) {
-      element.scrollIntoView({ behavior: "smooth" });
-    }
-    setIsMenuOpen(false);
-  };
-
   const navLinks = [
-    { label: "Home", id: "hero" },
-    { label: "About Us", id: "about-us" },
-    { label: "About Me", id: "about-me" },
-    { label: "Services", id: "services" },
-    { label: "Contact", id: "contact" },
+    { label: "Home", path: "/" },
+    { label: "About Us", path: "/about-us" },
+    { label: "About Me", path: "/about-me" },
+    { label: "Services", path: "/services" },
+    { label: "Contact", path: "/contact" },
   ];
 
   return (
@@ -45,29 +39,33 @@ export default function Navigation({ calendarLink }: NavigationProps) {
       data-testid="navigation"
     >
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex items-center justify-between h-16 gap-4">
-          <button
-            onClick={() => scrollToSection("hero")}
+        <div className="flex items-center justify-between h-20 gap-4">
+          <Link
+            href="/"
             className="flex items-center gap-2"
             data-testid="link-logo"
           >
             <img
               src={logoImage}
               alt="ConsultTech CRM"
-              className="h-10 w-auto"
+              className="h-14 w-auto"
             />
-          </button>
+          </Link>
 
           <div className="hidden md:flex items-center gap-6 flex-wrap">
             {navLinks.map((link) => (
-              <button
-                key={link.id}
-                onClick={() => scrollToSection(link.id)}
-                className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors"
-                data-testid={`link-${link.id}`}
+              <Link
+                key={link.path}
+                href={link.path}
+                className={`text-sm font-medium transition-colors ${
+                  location === link.path
+                    ? "text-primary"
+                    : "text-muted-foreground hover:text-foreground"
+                }`}
+                data-testid={`link-${link.path.replace("/", "") || "home"}`}
               >
                 {link.label}
-              </button>
+              </Link>
             ))}
           </div>
 
@@ -96,14 +94,19 @@ export default function Navigation({ calendarLink }: NavigationProps) {
         <div className="md:hidden bg-background border-b border-border">
           <div className="px-4 py-4 space-y-3">
             {navLinks.map((link) => (
-              <button
-                key={link.id}
-                onClick={() => scrollToSection(link.id)}
-                className="block w-full text-left text-sm font-medium text-muted-foreground hover:text-foreground transition-colors py-2"
-                data-testid={`link-mobile-${link.id}`}
+              <Link
+                key={link.path}
+                href={link.path}
+                onClick={() => setIsMenuOpen(false)}
+                className={`block w-full text-left text-sm font-medium transition-colors py-2 ${
+                  location === link.path
+                    ? "text-primary"
+                    : "text-muted-foreground hover:text-foreground"
+                }`}
+                data-testid={`link-mobile-${link.path.replace("/", "") || "home"}`}
               >
                 {link.label}
-              </button>
+              </Link>
             ))}
             <Button asChild className="w-full mt-4" data-testid="button-schedule-mobile">
               <a href={calendarLink} target="_blank" rel="noopener noreferrer">

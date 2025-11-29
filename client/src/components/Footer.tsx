@@ -1,3 +1,4 @@
+import { Link } from "wouter";
 import logoImage from "@assets/ConsultTech Logo2 Transparent_1764386506741.png";
 import { Linkedin, Mail, Calendar } from "lucide-react";
 
@@ -6,21 +7,14 @@ interface FooterProps {
 }
 
 export default function Footer({ calendarLink }: FooterProps) {
-  const scrollToSection = (sectionId: string) => {
-    const element = document.getElementById(sectionId);
-    if (element) {
-      element.scrollIntoView({ behavior: "smooth" });
-    }
-  };
-
   const currentYear = new Date().getFullYear();
 
   const quickLinks = [
-    { label: "Home", id: "hero" },
-    { label: "About Us", id: "about-us" },
-    { label: "About Me", id: "about-me" },
-    { label: "Services", id: "services" },
-    { label: "Contact", id: "contact" },
+    { label: "Home", path: "/" },
+    { label: "About Us", path: "/about-us" },
+    { label: "About Me", path: "/about-me" },
+    { label: "Services", path: "/services" },
+    { label: "Contact", path: "/contact" },
   ];
 
   return (
@@ -46,14 +40,14 @@ export default function Footer({ calendarLink }: FooterProps) {
             </h3>
             <ul className="space-y-2">
               {quickLinks.map((link) => (
-                <li key={link.id}>
-                  <button
-                    onClick={() => scrollToSection(link.id)}
+                <li key={link.path}>
+                  <Link
+                    href={link.path}
                     className="text-sm text-muted-foreground hover:text-foreground transition-colors"
-                    data-testid={`footer-link-${link.id}`}
+                    data-testid={`footer-link-${link.path.replace("/", "") || "home"}`}
                   >
                     {link.label}
-                  </button>
+                  </Link>
                 </li>
               ))}
             </ul>
@@ -77,14 +71,14 @@ export default function Footer({ calendarLink }: FooterProps) {
                 </a>
               </li>
               <li>
-                <button
-                  onClick={() => scrollToSection("contact")}
+                <Link
+                  href="/contact"
                   className="flex items-center gap-2 text-sm text-muted-foreground hover:text-foreground transition-colors"
                   data-testid="footer-link-email"
                 >
                   <Mail className="w-4 h-4" />
                   Contact Us
-                </button>
+                </Link>
               </li>
               <li>
                 <a

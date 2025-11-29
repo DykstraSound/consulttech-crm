@@ -1,5 +1,6 @@
+import { Link } from "wouter";
 import { Button } from "@/components/ui/button";
-import { Calendar, ArrowDown } from "lucide-react";
+import { Calendar, ArrowRight } from "lucide-react";
 import logoImage from "@assets/ConsultTech Logo1 Transparent_1764386506740.png";
 import heroBackground from "@assets/stock_images/technology_consultin_1b9fd8f3.jpg";
 
@@ -8,13 +9,6 @@ interface HeroProps {
 }
 
 export default function Hero({ calendarLink }: HeroProps) {
-  const scrollToSection = (sectionId: string) => {
-    const element = document.getElementById(sectionId);
-    if (element) {
-      element.scrollIntoView({ behavior: "smooth" });
-    }
-  };
-
   return (
     <section
       id="hero"
@@ -61,12 +55,14 @@ export default function Hero({ calendarLink }: HeroProps) {
           <Button
             variant="outline"
             size="lg"
-            onClick={() => scrollToSection("about-us")}
+            asChild
             className="min-w-[200px] bg-white/10 backdrop-blur-sm border-white/30 text-white hover:bg-white/20"
             data-testid="button-learn-more"
           >
-            Learn More
-            <ArrowDown className="w-5 h-5 ml-2" />
+            <Link href="/about-us">
+              Learn More
+              <ArrowRight className="w-5 h-5 ml-2" />
+            </Link>
           </Button>
         </div>
       </div>
