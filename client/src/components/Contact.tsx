@@ -5,7 +5,10 @@ import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Label } from "@/components/ui/label";
 import { useToast } from "@/hooks/use-toast";
+import { useMutation } from "@tanstack/react-query";
+import { apiRequest } from "@/lib/queryClient";
 import { Calendar, Mail, Send, CheckCircle } from "lucide-react";
+import type { InsertContactSubmission } from "@shared/schema";
 
 interface ContactProps {
   calendarLink: string;
@@ -13,13 +16,33 @@ interface ContactProps {
 
 export default function Contact({ calendarLink }: ContactProps) {
   const { toast } = useToast();
-  const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSubmitted, setIsSubmitted] = useState(false);
-  const [formData, setFormData] = useState({
+  const [formData, setFormData] = useState<InsertContactSubmission>({
     name: "",
     email: "",
     company: "",
     message: "",
+  });
+
+  const submitMutation = useMutation({
+    mutationFn: async (data: InsertContactSubmission) => {
+      const response = await apiRequest("POST", "/api/contact", data);
+      return response.json();
+    },
+    onSuccess: () => {
+      toast({
+        title: "Message sent!",
+        description: "Thank you for reaching out. We'll get back to you soon.",
+      });
+      setIsSubmitted(true);
+    },
+    onError: (error: Error) => {
+      toast({
+        title: "Error sending message",
+        description: error.message || "Please try again later.",
+        variant: "destructive",
+      });
+    },
   });
 
   const handleChange = (
@@ -31,19 +54,7 @@ export default function Contact({ calendarLink }: ContactProps) {
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    setIsSubmitting(true);
-
-    await new Promise((resolve) => setTimeout(resolve, 1000));
-
-    console.log("Contact form submitted:", formData);
-    
-    toast({
-      title: "Message sent!",
-      description: "Thank you for reaching out. We'll get back to you soon.",
-    });
-
-    setIsSubmitted(true);
-    setIsSubmitting(false);
+    submitMutation.mutate(formData);
   };
 
   const handleReset = () => {
@@ -127,7 +138,7 @@ export default function Contact({ calendarLink }: ContactProps) {
                     <Input
                       id="company"
                       name="company"
-                      value={formData.company}
+                      value={formData.company || ""}
                       onChange={handleChange}
                       placeholder="Your company name"
                       data-testid="input-company"
@@ -152,10 +163,10 @@ export default function Contact({ calendarLink }: ContactProps) {
                   <Button
                     type="submit"
                     className="w-full"
-                    disabled={isSubmitting}
+                    disabled={submitMutation.isPending}
                     data-testid="button-submit"
                   >
-                    {isSubmitting ? (
+                    {submitMutation.isPending ? (
                       "Sending..."
                     ) : (
                       <>
