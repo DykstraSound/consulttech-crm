@@ -18,7 +18,7 @@ export default function Footer({ calendarLink }: FooterProps) {
   ];
 
   return (
-    <footer className="bg-background border-t border-border" data-testid="footer">
+    <footer className="bg-gradient-to-br from-background to-primary/5 border-t border-border" data-testid="footer">
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
         <div className="grid md:grid-cols-3 gap-8">
           <div>
@@ -35,7 +35,7 @@ export default function Footer({ calendarLink }: FooterProps) {
           </div>
 
           <div>
-            <h3 className="text-sm font-semibold text-foreground uppercase tracking-wider mb-4">
+            <h3 className="text-sm font-semibold text-primary uppercase tracking-wider mb-4">
               Quick Links
             </h3>
             <ul className="space-y-2">
@@ -43,7 +43,7 @@ export default function Footer({ calendarLink }: FooterProps) {
                 <li key={link.path}>
                   <Link
                     href={link.path}
-                    className="text-sm text-muted-foreground hover:text-foreground transition-colors"
+                    className="text-sm text-muted-foreground hover:text-primary transition-colors"
                     data-testid={`footer-link-${link.path.replace("/", "") || "home"}`}
                   >
                     {link.label}
@@ -54,7 +54,7 @@ export default function Footer({ calendarLink }: FooterProps) {
           </div>
 
           <div>
-            <h3 className="text-sm font-semibold text-foreground uppercase tracking-wider mb-4">
+            <h3 className="text-sm font-semibold text-primary uppercase tracking-wider mb-4">
               Connect
             </h3>
             <ul className="space-y-3">
@@ -63,7 +63,7 @@ export default function Footer({ calendarLink }: FooterProps) {
                   href={calendarLink}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="flex items-center gap-2 text-sm text-muted-foreground hover:text-foreground transition-colors"
+                  className="flex items-center gap-2 text-sm text-muted-foreground hover:text-primary transition-colors"
                   data-testid="footer-link-calendar"
                 >
                   <Calendar className="w-4 h-4" />
@@ -73,7 +73,7 @@ export default function Footer({ calendarLink }: FooterProps) {
               <li>
                 <Link
                   href="/contact"
-                  className="flex items-center gap-2 text-sm text-muted-foreground hover:text-foreground transition-colors"
+                  className="flex items-center gap-2 text-sm text-muted-foreground hover:text-primary transition-colors"
                   data-testid="footer-link-email"
                 >
                   <Mail className="w-4 h-4" />
@@ -83,7 +83,7 @@ export default function Footer({ calendarLink }: FooterProps) {
               <li>
                 <a
                   href="#"
-                  className="flex items-center gap-2 text-sm text-muted-foreground hover:text-foreground transition-colors"
+                  className="flex items-center gap-2 text-sm text-muted-foreground hover:text-primary transition-colors"
                   data-testid="footer-link-linkedin"
                 >
                   <Linkedin className="w-4 h-4" />
@@ -96,7 +96,7 @@ export default function Footer({ calendarLink }: FooterProps) {
 
         <div className="border-t border-border mt-8 pt-8 text-center">
           <p className="text-sm text-muted-foreground">
-            &copy; {currentYear} ConsultTech CRM. All rights reserved.
+            &copy; {currentYear} <span className="text-primary">ConsultTech CRM</span>. All rights reserved.
           </p>
         </div>
       </div>

@@ -54,13 +54,13 @@ export default function Contact({ calendarLink }: ContactProps) {
   return (
     <section
       id="contact"
-      className="py-16 lg:py-24 bg-card"
+      className="py-16 lg:py-24 bg-gradient-to-br from-background via-[hsl(190,100%,45%)]/5 to-primary/5"
       data-testid="section-contact"
     >
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-12">
           <h2 className="text-3xl lg:text-4xl font-bold text-foreground mb-4">
-            Get In Touch
+            Get In <span className="text-primary">Touch</span>
           </h2>
           <p className="text-lg text-muted-foreground max-w-3xl mx-auto leading-relaxed">
             Ready to transform your CRM strategy? Let's discuss how we can help your business grow.
@@ -71,14 +71,18 @@ export default function Contact({ calendarLink }: ContactProps) {
           <Card className="border-border">
             <CardHeader>
               <CardTitle className="flex items-center gap-2">
-                <Mail className="w-5 h-5 text-primary" />
+                <div className="w-8 h-8 rounded-md bg-primary/10 flex items-center justify-center">
+                  <Mail className="w-4 h-4 text-primary" />
+                </div>
                 Send a Message
               </CardTitle>
             </CardHeader>
             <CardContent>
               {isSubmitted ? (
                 <div className="text-center py-8">
-                  <CheckCircle className="w-16 h-16 text-green-500 mx-auto mb-4" />
+                  <div className="w-16 h-16 rounded-full bg-green-500/10 flex items-center justify-center mx-auto mb-4">
+                    <CheckCircle className="w-8 h-8 text-green-500" />
+                  </div>
                   <h3 className="text-xl font-semibold text-foreground mb-2">
                     Thank You!
                   </h3>
@@ -166,10 +170,12 @@ export default function Contact({ calendarLink }: ContactProps) {
           </Card>
 
           <div className="space-y-6">
-            <Card className="border-border">
+            <Card className="border-primary/30 bg-gradient-to-br from-primary/10 to-transparent">
               <CardHeader>
                 <CardTitle className="flex items-center gap-2">
-                  <Calendar className="w-5 h-5 text-primary" />
+                  <div className="w-8 h-8 rounded-md bg-primary flex items-center justify-center">
+                    <Calendar className="w-4 h-4 text-primary-foreground" />
+                  </div>
                   Schedule a Call
                 </CardTitle>
               </CardHeader>
@@ -187,10 +193,10 @@ export default function Contact({ calendarLink }: ContactProps) {
               </CardContent>
             </Card>
 
-            <Card className="border-border bg-primary/5">
+            <Card className="border-[hsl(190,100%,45%)]/30 bg-gradient-to-br from-[hsl(190,100%,45%)]/10 to-transparent">
               <CardContent className="p-6">
                 <h3 className="text-lg font-semibold text-foreground mb-4">
-                  Why Choose ConsultTech CRM?
+                  Why Choose <span className="text-primary">ConsultTech CRM</span>?
                 </h3>
                 <ul className="space-y-3 text-sm text-muted-foreground">
                   <li className="flex items-start gap-2">

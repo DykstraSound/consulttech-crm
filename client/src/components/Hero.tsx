@@ -56,7 +56,7 @@ export default function Hero({ calendarLink }: HeroProps) {
             variant="outline"
             size="lg"
             asChild
-            className="min-w-[200px] bg-white/10 backdrop-blur-sm border-white/30 text-white hover:bg-white/20"
+            className="min-w-[200px] bg-[hsl(190,100%,45%)]/20 backdrop-blur-sm border-[hsl(190,100%,45%)]/50 text-white hover:bg-[hsl(190,100%,45%)]/30"
             data-testid="button-learn-more"
           >
             <Link href="/about-us">

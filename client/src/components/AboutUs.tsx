@@ -28,13 +28,13 @@ export default function AboutUs() {
   return (
     <section
       id="about-us"
-      className="py-16 lg:py-24 bg-background"
+      className="py-16 lg:py-24 bg-gradient-to-br from-background via-background to-[hsl(190,100%,45%)]/5"
       data-testid="section-about-us"
     >
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-12">
           <h2 className="text-3xl lg:text-4xl font-bold text-foreground mb-4">
-            About ConsultTech CRM
+            About <span className="text-primary">ConsultTech CRM</span>
           </h2>
           <p className="text-lg text-muted-foreground max-w-3xl mx-auto leading-relaxed">
             We are a specialized consultancy firm dedicated to helping businesses 
@@ -45,9 +45,12 @@ export default function AboutUs() {
         </div>
 
         <div className="max-w-4xl mx-auto mb-12">
-          <Card className="border-border">
+          <Card className="border-primary/20 bg-gradient-to-br from-primary/5 to-transparent">
             <CardContent className="p-6 lg:p-8">
-              <h3 className="text-xl font-semibold text-foreground mb-4">Our Mission</h3>
+              <h3 className="text-xl font-semibold text-foreground mb-4 flex items-center gap-2">
+                <span className="w-1 h-6 bg-primary rounded-full"></span>
+                Our Mission
+              </h3>
               <p className="text-muted-foreground leading-relaxed">
                 To empower businesses with the right CRM strategies and implementations 
                 that enhance customer relationships, streamline operations, and accelerate 
@@ -60,19 +63,19 @@ export default function AboutUs() {
         </div>
 
         <h3 className="text-2xl font-semibold text-foreground text-center mb-8">
-          Our Expertise
+          Our <span className="text-primary">Expertise</span>
         </h3>
         
         <div className="grid md:grid-cols-2 gap-6">
           {services.map((service) => (
             <Card
               key={service.title}
-              className="border-border hover-elevate transition-all"
+              className="border-border hover-elevate transition-all group"
               data-testid={`card-service-${service.title.toLowerCase().replace(/\s+/g, '-')}`}
             >
               <CardContent className="p-6 flex gap-4">
                 <div className="flex-shrink-0">
-                  <div className="w-12 h-12 rounded-md bg-primary/10 flex items-center justify-center">
+                  <div className="w-12 h-12 rounded-md bg-gradient-to-br from-primary/20 to-[hsl(190,100%,45%)]/20 flex items-center justify-center group-hover:from-primary/30 group-hover:to-[hsl(190,100%,45%)]/30 transition-all">
                     <service.icon className="w-6 h-6 text-primary" />
                   </div>
                 </div>
