@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useRef } from "react";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -12,8 +12,7 @@ import {
   FormMessage,
 } from "@/components/ui/form";
 import { useToast } from "@/hooks/use-toast";
-import { useMutation } from "@tanstack/react-query";
-import { apiRequest } from "@/lib/queryClient";
+import emailjs from "@emailjs/browser";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { Calendar, Mail, Send, CheckCircle } from "lucide-react";
@@ -36,6 +35,8 @@ const contactFormSchema = insertContactSubmissionSchema.extend({
 export default function Contact({ calendarLink }: ContactProps) {
   const { toast } = useToast();
   const [isSubmitted, setIsSubmitted] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
+  const formRef = useRef<HTMLFormElement>(null);
 
   const form = useForm<InsertContactSubmission>({
     resolver: zodResolver(contactFormSchema),
@@ -47,29 +48,41 @@ export default function Contact({ calendarLink }: ContactProps) {
     },
   });
 
-  const submitMutation = useMutation({
-    mutationFn: async (data: InsertContactSubmission) => {
-      const response = await apiRequest("POST", "/api/contact", data);
-      return response.json();
-    },
-    onSuccess: () => {
+  const emailJSConfig = {
+    serviceId: import.meta.env.VITE_EMAILJS_SERVICE_ID || "your_service_id",
+    templateId: import.meta.env.VITE_EMAILJS_TEMPLATE_ID || "your_template_id",
+    publicKey: import.meta.env.VITE_EMAILJS_PUBLIC_KEY || "your_public_key",
+  };
+
+  const onSubmit = async (data: InsertContactSubmission) => {
+    if (!formRef.current) return;
+
+    setIsLoading(true);
+
+    try {
+      await emailjs.sendForm(
+        emailJSConfig.serviceId,
+        emailJSConfig.templateId,
+        formRef.current,
+        emailJSConfig.publicKey
+      );
+
       toast({
         title: "Message sent!",
         description: "Thank you for reaching out. We'll get back to you soon.",
       });
       setIsSubmitted(true);
-    },
-    onError: (error: Error) => {
+      form.reset();
+    } catch (error) {
+      console.error("EmailJS Error:", error);
       toast({
         title: "Error sending message",
-        description: error.message || "Please try again later.",
+        description: "Please try again later.",
         variant: "destructive",
       });
-    },
-  });
-
-  const onSubmit = (data: InsertContactSubmission) => {
-    submitMutation.mutate(data);
+    } finally {
+      setIsLoading(false);
+    }
   };
 
   const handleReset = () => {
@@ -126,6 +139,7 @@ export default function Contact({ calendarLink }: ContactProps) {
               ) : (
                 <Form {...form}>
                   <form
+                    ref={formRef}
                     onSubmit={form.handleSubmit(onSubmit)}
                     className="space-y-4">
                     <FormField
@@ -207,9 +221,9 @@ export default function Contact({ calendarLink }: ContactProps) {
                     <Button
                       type="submit"
                       className="w-full"
-                      disabled={submitMutation.isPending}
+                      disabled={isLoading}
                       data-testid="button-submit">
-                      {submitMutation.isPending ? (
+                      {isLoading ? (
                         "Sending..."
                       ) : (
                         <>
