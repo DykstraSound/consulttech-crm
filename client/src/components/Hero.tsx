@@ -29,12 +29,12 @@ export default function Hero({ calendarLink }: HeroProps) {
           data-testid="img-hero-logo"
         />
         
-        <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-6 leading-tight">
+        <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-black mb-6 leading-tight">
           Expert CRM Consulting for
           <span className="block text-primary">Your Business Success</span>
         </h1>
         
-        <p className="text-lg md:text-xl text-gray-200 mb-8 max-w-2xl mx-auto leading-relaxed">
+        <p className="text-lg md:text-xl text-gray-800 mb-8 max-w-2xl mx-auto leading-relaxed">
           Certified Salesforce, StoreConnect, and AWS consultant helping businesses 
           optimize their CRM implementations and drive growth through technology.
         </p>
