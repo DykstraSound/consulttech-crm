@@ -19,7 +19,7 @@ export default function Hero({ calendarLink }: HeroProps) {
         className="absolute inset-0 bg-cover bg-center bg-no-repeat"
         style={{ backgroundImage: `url(${heroBackground})` }}
       />
-      <div className="absolute inset-0 bg-gradient-to-b from-black/80 via-black/75 to-black/80 md:from-black/70 md:via-black/60 md:to-black/80" />
+      <div className="absolute inset-0 bg-gradient-to-b from-black/85 via-black/80 to-black/85 md:from-black/70 md:via-black/60 md:to-black/80" />
       
       <div className="relative z-10 max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center py-20">
         <img
@@ -29,12 +29,12 @@ export default function Hero({ calendarLink }: HeroProps) {
           data-testid="img-hero-logo"
         />
         
-        <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-black mb-6 leading-tight">
+        <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-6 leading-tight drop-shadow-lg">
           Expert CRM Consulting for
           <span className="block text-primary">Your Business Success</span>
         </h1>
         
-        <p className="text-lg md:text-xl text-gray-800 mb-8 max-w-2xl mx-auto leading-relaxed">
+        <p className="text-lg md:text-xl text-gray-200 mb-8 max-w-2xl mx-auto leading-relaxed drop-shadow-lg">
           Certified Salesforce, StoreConnect, and AWS consultant helping businesses 
           optimize their CRM implementations and drive growth through technology.
         </p>
