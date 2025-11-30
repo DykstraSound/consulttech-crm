@@ -22,22 +22,24 @@ export default function Hero({ calendarLink }: HeroProps) {
       <div className="absolute inset-0 bg-gradient-to-b from-black/85 via-black/80 to-black/85 md:from-black/70 md:via-black/60 md:to-black/80" />
       
       <div className="relative z-10 max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center py-20">
-        <img
-          src={logoImage}
-          alt="ConsultTech CRM"
-          className="h-48 md:h-64 lg:h-80 w-auto mx-auto mb-8"
-          data-testid="img-hero-logo"
-        />
-        
-        <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-6 leading-tight drop-shadow-lg">
-          Expert CRM Consulting for
-          <span className="block text-primary">Your Business Success</span>
-        </h1>
-        
-        <p className="text-lg md:text-xl text-gray-200 mb-8 max-w-2xl mx-auto leading-relaxed drop-shadow-lg">
-          Certified Salesforce, StoreConnect, and AWS consultant helping businesses 
-          optimize their CRM implementations and drive growth through technology.
-        </p>
+        <div className="bg-black/50 rounded-lg p-8 md:p-12">
+          <img
+            src={logoImage}
+            alt="ConsultTech CRM"
+            className="h-48 md:h-64 lg:h-80 w-auto mx-auto mb-8"
+            data-testid="img-hero-logo"
+          />
+          
+          <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-6 leading-tight drop-shadow-lg">
+            Expert CRM Consulting for
+            <span className="block text-primary">Your Business Success</span>
+          </h1>
+          
+          <p className="text-lg md:text-xl text-gray-200 mb-8 max-w-2xl mx-auto leading-relaxed drop-shadow-lg">
+            Certified Salesforce, StoreConnect, and AWS consultant helping businesses 
+            optimize their CRM implementations and drive growth through technology.
+          </p>
+        </div>
         
         <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
           <Button
