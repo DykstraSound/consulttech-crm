@@ -19,7 +19,7 @@ export default function Hero({ calendarLink }: HeroProps) {
         className="absolute inset-0 bg-cover bg-center bg-no-repeat"
         style={{ backgroundImage: `url(${heroBackground})` }}
       />
-      <div className="absolute inset-0 bg-gradient-to-b from-black/85 via-black/80 to-black/85 md:from-black/70 md:via-black/60 md:to-black/80" />
+      <div className="absolute inset-0 bg-black/70 md:bg-black/60" />
       
       <div className="relative z-10 max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center py-20">
         <div className="bg-black/50 rounded-lg p-8 md:p-12">
