@@ -37,6 +37,9 @@ export default function Contact({ calendarLink }: ContactProps) {
   const [isSubmitted, setIsSubmitted] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
   const formRef = useRef<HTMLFormElement>(null);
+  const emailJSserviceId: string = "service_c5b6tck";
+  const emailJStemplateId: string = "template_u13qoij";
+  const emailJSPublicKey: string = "e5ixZ_2dTu3wqEuh5";
 
   const form = useForm<InsertContactSubmission>({
     resolver: zodResolver(contactFormSchema),
@@ -49,9 +52,9 @@ export default function Contact({ calendarLink }: ContactProps) {
   });
 
   const emailJSConfig = {
-    serviceId: import.meta.env.VITE_EMAILJS_SERVICE_ID || "your_service_id",
-    templateId: import.meta.env.VITE_EMAILJS_TEMPLATE_ID || "your_template_id",
-    publicKey: import.meta.env.VITE_EMAILJS_PUBLIC_KEY || "your_public_key",
+    serviceId: emailJSserviceId,
+    templateId: emailJStemplateId,
+    publicKey: emailJSPublicKey,
   };
 
   const onSubmit = async (data: InsertContactSubmission) => {
