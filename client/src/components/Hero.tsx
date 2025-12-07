@@ -36,7 +36,7 @@ export default function Hero({ calendarLink }: HeroProps) {
         
         <p className="text-lg md:text-xl text-gray-200 mb-8 max-w-2xl mx-auto leading-relaxed drop-shadow-lg">
           Certified Salesforce, StoreConnect, and AWS consultant helping businesses 
-          optimize CRM implementations and drive growth through technology.
+          optimize CRM implementations and drive growth through secure and efficienttechnology.
         </p>
         
         <div className="flex flex-col sm:flex-row items-center justify-center gap-4">

@@ -75,7 +75,7 @@ export default function AboutMe() {
             
             <div className="flex-1">
               <p className="text-lg text-muted-foreground leading-relaxed mb-6">
-                With a relentless focus on efficientCRM implementation and cloud technologies, 
+                With a relentless focus on efficient CRM implementation and cloud technologies, 
                 I founded ConsultTech CRM to help businesses navigate the complex world 
                 of customer relationship management. My approach combines technical 
                 expertise with a deep understanding of business processes to deliver 
@@ -83,7 +83,7 @@ export default function AboutMe() {
               </p>
               <p className="text-lg text-muted-foreground leading-relaxed">
                 I specialize in Salesforce and StoreConnect platforms, with additional 
-                expertise in AWS cloud infrastructure. Whether you're looking to implement 
+                expertise in AWS cloud infrastructure and cybersecurity. Whether you're looking to implement 
                 a new CRM system, optimize your existing setup, or integrate your CRM 
                 with other business tools, I'm here to help you achieve your goals.
               </p>
@@ -97,7 +97,7 @@ export default function AboutMe() {
           {badges.length > 0 && (
             <div className="mb-12">
               <h4 className="text-lg font-semibold text-foreground text-center mb-6">
-                Industry <span className="text-primary">Badges</span>
+                Industry <span className="text-primary">Certifications</span>
               </h4>
               <div className="flex flex-wrap justify-center gap-6 items-center">
                 {badges.map((badgeSrc, index) => (
