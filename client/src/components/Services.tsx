@@ -70,17 +70,19 @@ export default function Services() {
               data-testid={`card-primary-${service.title.toLowerCase().replace(/\s+/g, '-')}`}
             >
               <CardHeader className="pb-4">
-                <div className="flex items-start justify-between gap-4 flex-wrap">
-                  <div className="w-14 h-14 rounded-md bg-gradient-to-br from-primary to-primary/70 flex items-center justify-center">
+                <div className="flex items-start gap-4">
+                  <div className="w-24 h-24 rounded-md bg-gradient-to-br from-primary to-primary/70 flex items-center justify-center flex-shrink-0">
                     {service.isImage ? (
-                      <img src={service.imageUrl} alt={service.title} className="w-7 h-7 object-contain" />
+                      <img src={service.imageUrl} alt={service.title} className="w-20 h-20 object-contain" />
                     ) : (
-                      <service.icon className="w-7 h-7 text-primary-foreground" />
+                      <service.icon className="w-12 h-12 text-primary-foreground" />
                     )}
                   </div>
-                  <Badge className="bg-primary text-primary-foreground border-0">Primary Service</Badge>
+                  <div className="flex-1 flex flex-col justify-between h-24">
+                    <CardTitle className="text-xl">{service.title}</CardTitle>
+                    <Badge className="bg-primary text-primary-foreground border-0 w-fit">Primary Service</Badge>
+                  </div>
                 </div>
-                <CardTitle className="text-xl mt-4">{service.title}</CardTitle>
               </CardHeader>
               <CardContent>
                 <p className="text-muted-foreground mb-4 leading-relaxed">

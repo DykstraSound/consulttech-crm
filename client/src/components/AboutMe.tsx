@@ -20,7 +20,8 @@ const certifications = [
   {
     platform: "StoreConnect",
     certs: [
-      { name: "Admin Training Path", icon: Award },
+      { name: "Certified Administrator", icon: Award },
+      { name: "Certified Theme Developer", icon: Award },
     ],
   },
   {
