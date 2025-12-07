@@ -2,7 +2,11 @@ import { Badge } from "@/components/ui/badge";
 import { Card, CardContent } from "@/components/ui/card";
 import { Award, Shield, CheckCircle } from "lucide-react";
 import headshotImage from "@assets/HS 3_1764388153432.jpeg";
-import { useState, useEffect } from "react";
+import sfAgentforceSpecialist from "@assets/certifications/SF Agentforce Specialist.png";
+import sfBusinessAnalyst from "@assets/certifications/SF Business Analyst.png";
+import sfPlatformAdmin from "@assets/certifications/SF Platform Admin.png";
+import badgeAdministrator from "@assets/certifications/badge_Administrator.png";
+import badgeThemeDeveloper from "@assets/certifications/badge_Theme Developer.png";
 
 const certifications = [
   {
@@ -27,32 +31,17 @@ const certifications = [
   },
 ];
 
-// Load all badge images from the certifications folder dynamically
-function useCertificationBadges() {
-  const [badges, setBadges] = useState<string[]>([]);
-
-  useEffect(() => {
-    const loadBadges = async () => {
-      const badgeModules = import.meta.glob<{ default: string }>("@assets/certifications/*", { eager: true });
-      const loadedBadges: string[] = [];
-      
-      Object.entries(badgeModules).forEach(([_, module]) => {
-        if ((module as any).default) {
-          loadedBadges.push((module as any).default);
-        }
-      });
-      
-      setBadges(loadedBadges);
-    };
-
-    loadBadges();
-  }, []);
-
-  return badges;
-}
+// Certification badge images
+const certificationBadges = [
+  sfAgentforceSpecialist,
+  sfBusinessAnalyst,
+  sfPlatformAdmin,
+  badgeAdministrator,
+  badgeThemeDeveloper,
+];
 
 export default function AboutMe() {
-  const badges = useCertificationBadges();
+  const badges = certificationBadges;
   return (
     <section
       id="about-me"
