@@ -38,7 +38,7 @@ export default function AboutUs() {
           </h2>
           <p className="text-lg text-muted-foreground max-w-3xl mx-auto leading-relaxed">
             We are a specialized consultancy firm dedicated to helping businesses 
-            maximize CRM investments. With deep expertise in Salesforce, 
+            maximize cloud and CRM investments. With deep expertise in Salesforce, 
             StoreConnect, and cloud technologies, we deliver tailored solutions 
             that drive real results.
           </p>
@@ -52,7 +52,7 @@ export default function AboutUs() {
                 Our Mission
               </h3>
               <p className="text-muted-foreground leading-relaxed">
-                To empower businesses with the right CRM strategies and implementations 
+                To empower businesses with the right strategies and implementations 
                 that enhance customer relationships, streamline operations, and accelerate 
                 growth. We believe in building long-term partnerships with our clients, 
                 providing ongoing support and expertise to ensure continued success 
