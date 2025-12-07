@@ -2,11 +2,11 @@ import { Badge } from "@/components/ui/badge";
 import { Card, CardContent } from "@/components/ui/card";
 import { Award, Shield, CheckCircle } from "lucide-react";
 import headshotImage from "@assets/HS 3_1764388153432.jpeg";
-import sfAgentforceSpecialist from "@assets/certifications/SF Agentforce Specialist.png";
-import sfBusinessAnalyst from "@assets/certifications/SF Business Analyst.png";
-import sfPlatformAdmin from "@assets/certifications/SF Platform Admin.png";
-import badgeAdministrator from "@assets/certifications/badge_Administrator.png";
-import badgeThemeDeveloper from "@assets/certifications/badge_Theme Developer.png";
+import sfAgentforceSpecialist from "@assets/SF Agentforce Specialist.png";
+import sfBusinessAnalyst from "@assets/SF Business Analyst.png";
+import sfPlatformAdmin from "@assets/SF Platform Admin.png";
+import badgeAdministrator from "@assets/badge_Administrator.png";
+import badgeThemeDeveloper from "@assets/badge_Theme Developer.png";
 
 const certifications = [
   {
