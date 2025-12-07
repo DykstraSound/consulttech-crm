@@ -1,17 +1,20 @@
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
-import { Cloud, ShoppingCart, Server, Settings, Users, Zap } from "lucide-react";
+import { Server, Settings, Users, Zap } from "lucide-react";
+import badgeImage from "@assets/Partner_Badges_Certified Partner.png";
 
 const primaryServices = [
   {
-    icon: Cloud,
+    imageUrl: "/favicon.png",
+    isImage: true,
     title: "Salesforce Consulting",
     description: "Comprehensive Salesforce services from implementation to optimization. We help you leverage the full power of Salesforce to manage customer relationships, automate workflows, and drive sales growth.",
     features: ["Implementation & Setup", "Custom Development", "Integration Services", "Training & Support"],
     isPrimary: true,
   },
   {
-    icon: ShoppingCart,
+    imageUrl: badgeImage,
+    isImage: true,
     title: "StoreConnect Services",
     description: "Expert StoreConnect administration and configuration services. Streamline your e-commerce operations with seamless integration between your storefront and back-office systems.",
     features: ["Platform Configuration", "Inventory Management", "Order Processing", "System Integration"],
@@ -69,7 +72,11 @@ export default function Services() {
               <CardHeader className="pb-4">
                 <div className="flex items-start justify-between gap-4 flex-wrap">
                   <div className="w-14 h-14 rounded-md bg-gradient-to-br from-primary to-primary/70 flex items-center justify-center">
-                    <service.icon className="w-7 h-7 text-primary-foreground" />
+                    {service.isImage ? (
+                      <img src={service.imageUrl} alt={service.title} className="w-7 h-7 object-contain" />
+                    ) : (
+                      <service.icon className="w-7 h-7 text-primary-foreground" />
+                    )}
                   </div>
                   <Badge className="bg-primary text-primary-foreground border-0">Primary Service</Badge>
                 </div>

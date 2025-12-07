@@ -2,6 +2,7 @@ import { Badge } from "@/components/ui/badge";
 import { Card, CardContent } from "@/components/ui/card";
 import { Award, Shield, CheckCircle } from "lucide-react";
 import headshotImage from "@assets/HS 3_1764388153432.jpeg";
+import { useMemo } from "react";
 
 const certifications = [
   {
@@ -26,7 +27,26 @@ const certifications = [
   },
 ];
 
+// Load all badge images from the certifications folder dynamically
+function useCertificationBadges() {
+  return useMemo(() => {
+    const badgeModules = import.meta.glob<{ default: string }>("@assets/certifications/*", { query: "?url", import: "default" });
+    const badges: string[] = [];
+    
+    // This will be executed at build time by Vite
+    Object.keys(badgeModules).forEach((path) => {
+      const module = badgeModules[path] as any;
+      if (module.default) {
+        badges.push(module.default);
+      }
+    });
+    
+    return badges;
+  }, []);
+}
+
 export default function AboutMe() {
+  const badges = useCertificationBadges();
   return (
     <section
       id="about-me"
@@ -76,6 +96,33 @@ export default function AboutMe() {
 
           <h3 className="text-2xl font-semibold text-foreground text-center mb-8">
             Certifications & <span className="text-primary">Credentials</span>
+          </h3>
+
+          {badges.length > 0 && (
+            <div className="mb-12">
+              <h4 className="text-lg font-semibold text-foreground text-center mb-6">
+                Industry <span className="text-primary">Badges</span>
+              </h4>
+              <div className="flex flex-wrap justify-center gap-6 items-center">
+                {badges.map((badgeSrc, index) => (
+                  <div
+                    key={`badge-${index}`}
+                    className="h-32 w-32 flex items-center justify-center bg-card/50 rounded-lg p-2 hover-elevate transition-all"
+                    data-testid={`badge-image-${index}`}
+                  >
+                    <img
+                      src={badgeSrc}
+                      alt={`Certification Badge ${index + 1}`}
+                      className="max-h-28 max-w-28 object-contain"
+                    />
+                  </div>
+                ))}
+              </div>
+            </div>
+          )}
+
+          <h3 className="text-2xl font-semibold text-foreground text-center mb-8">
+            Certification <span className="text-primary">Details</span>
           </h3>
 
           <div className="grid md:grid-cols-3 gap-6">
