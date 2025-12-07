@@ -16,7 +16,7 @@ const primaryServices = [
     imageUrl: badgeImage,
     isImage: true,
     title: "StoreConnect Services",
-    description: "Expert StoreConnect administration and configuration services. Streamline your e-commerce operations with seamless integration between your storefront and back-office systems.",
+    description: "Expert StoreConnect administration and configuration services. Streamline your e-commerce operations with seamless integration between storefront and back-office systems.",
     features: ["Platform Configuration", "Inventory Management", "Order Processing", "System Integration"],
     isPrimary: true,
   },
@@ -26,7 +26,7 @@ const secondaryServices = [
   {
     icon: Settings,
     title: "CRM Strategy",
-    description: "Strategic consulting to help you choose and implement the right CRM solution for your business needs.",
+    description: "Strategic consulting to help choose and implement the right CRM solution for your business needs.",
   },
   {
     icon: Server,

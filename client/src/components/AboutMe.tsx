@@ -75,7 +75,7 @@ export default function AboutMe() {
             
             <div className="flex-1">
               <p className="text-lg text-muted-foreground leading-relaxed mb-6">
-                With years of experience in CRM implementation and cloud technologies, 
+                With a relentless focus on efficientCRM implementation and cloud technologies, 
                 I founded ConsultTech CRM to help businesses navigate the complex world 
                 of customer relationship management. My approach combines technical 
                 expertise with a deep understanding of business processes to deliver 
