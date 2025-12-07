@@ -2,7 +2,7 @@ import { Badge } from "@/components/ui/badge";
 import { Card, CardContent } from "@/components/ui/card";
 import { Award, Shield, CheckCircle } from "lucide-react";
 import headshotImage from "@assets/HS 3_1764388153432.jpeg";
-import { useMemo } from "react";
+import { useState, useEffect } from "react";
 
 const certifications = [
   {
@@ -29,20 +29,26 @@ const certifications = [
 
 // Load all badge images from the certifications folder dynamically
 function useCertificationBadges() {
-  return useMemo(() => {
-    const badgeModules = import.meta.glob<{ default: string }>("@assets/certifications/*", { query: "?url", import: "default" });
-    const badges: string[] = [];
-    
-    // This will be executed at build time by Vite
-    Object.keys(badgeModules).forEach((path) => {
-      const module = badgeModules[path] as any;
-      if (module.default) {
-        badges.push(module.default);
-      }
-    });
-    
-    return badges;
+  const [badges, setBadges] = useState<string[]>([]);
+
+  useEffect(() => {
+    const loadBadges = async () => {
+      const badgeModules = import.meta.glob<{ default: string }>("@assets/certifications/*", { eager: true });
+      const loadedBadges: string[] = [];
+      
+      Object.entries(badgeModules).forEach(([_, module]) => {
+        if ((module as any).default) {
+          loadedBadges.push((module as any).default);
+        }
+      });
+      
+      setBadges(loadedBadges);
+    };
+
+    loadBadges();
   }, []);
+
+  return badges;
 }
 
 export default function AboutMe() {
