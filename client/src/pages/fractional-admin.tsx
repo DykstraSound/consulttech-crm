@@ -24,12 +24,12 @@ const included = [
   {
     icon: BarChart3,
     title: "Reports & Dashboards",
-    description: "Building and maintaining the reports and dashboards your team needs to see what's happening in the business — in real time.",
+    description: "Building and maintaining the reports and dashboards your team needs to see what's happening in the business - in real time.",
   },
   {
     icon: Settings,
     title: "Configuration & Optimization",
-    description: "Ongoing configuration changes, workflow adjustments, and process improvements as your business evolves — without a project each time.",
+    description: "Ongoing configuration changes, workflow adjustments, and process improvements as your business evolves - without a project each time.",
   },
 ];
 
@@ -63,7 +63,7 @@ export default function FractionalAdminPage() {
               <span className="block text-primary">Administration</span>
             </h1>
             <p className="text-lg text-muted-foreground mb-8 max-w-2xl mx-auto leading-relaxed">
-              A certified Salesforce administrator on your team — on demand, without the overhead of
+              A certified Salesforce administrator on your team - on demand, without the overhead of
               a full-time hire. Ongoing support, optimization, and expertise under a flexible monthly retainer.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">

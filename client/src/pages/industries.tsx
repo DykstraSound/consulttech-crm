@@ -12,17 +12,6 @@ const CALENDAR_LINK = "https://calendar.app.google/BJd5zjhMD5ZXctAx8";
 
 const industryDetails = [
   {
-    name: "Manufacturing",
-    challenges: [
-      "Quoting and estimating cycles that slip through the cracks",
-      "Opportunity tracking spread across email and spreadsheets",
-      "No visibility into where deals are in the pipeline",
-      "Disconnected systems between sales and production",
-    ],
-    howWeHelp:
-      "We configure Salesforce to match your quoting and production workflows — giving your sales team a single source of truth and your leadership real-time pipeline visibility. Fractional admin keeps it running smoothly as your processes evolve.",
-  },
-  {
     name: "Construction",
     challenges: [
       "Bid management spread across email threads and shared drives",
@@ -31,7 +20,7 @@ const industryDetails = [
       "Lost follow-up on bids that don't close immediately",
     ],
     howWeHelp:
-      "We build Salesforce around your bid-to-project lifecycle — from initial lead through awarded contract. Custom stages, automated follow-up reminders, and dashboards designed for how construction teams actually work.",
+      "We build Salesforce around your bid-to-project lifecycle - from initial lead through awarded contract. Custom stages, automated follow-up reminders, and dashboards designed for how construction teams actually work.",
   },
   {
     name: "Distribution & Wholesale",
@@ -42,7 +31,18 @@ const industryDetails = [
       "Sales reps lack tools to prioritize their book of business",
     ],
     howWeHelp:
-      "We implement Salesforce to work alongside your ERP — capturing the customer relationship context your transactional systems can't. Renewal tracking, customer health scoring, and rep-facing dashboards that drive proactive account management.",
+      "We implement Salesforce to work alongside your ERP - capturing the customer relationship context your transactional systems can't. Renewal tracking, customer health scoring, and rep-facing dashboards that drive proactive account management.",
+  },
+  {
+    name: "Manufacturing",
+    challenges: [
+      "Quoting and estimating cycles that slip through the cracks",
+      "Opportunity tracking spread across email and spreadsheets",
+      "No visibility into where deals are in the pipeline",
+      "Disconnected systems between sales and production",
+    ],
+    howWeHelp:
+      "We configure Salesforce to match your quoting and production workflows - giving your sales team a single source of truth and your leadership real-time pipeline visibility. Fractional admin keeps it running smoothly as your processes evolve.",
   },
   {
     name: "Professional Services",
@@ -53,7 +53,7 @@ const industryDetails = [
       "Client success is reactive instead of proactive",
     ],
     howWeHelp:
-      "We configure Salesforce to connect your sales pipeline to delivery — so nothing falls through the cracks at handoff. Account health tracking and structured client success workflows help you stay ahead of churn.",
+      "We configure Salesforce to connect your sales pipeline to delivery - so nothing falls through the cracks at handoff. Account health tracking and structured client success workflows help you stay ahead of churn.",
   },
 ];
 
@@ -76,7 +76,7 @@ export default function IndustriesPage() {
                 Industries <span className="text-primary">We Serve</span>
               </h1>
               <p className="text-lg text-muted-foreground max-w-3xl mx-auto leading-relaxed">
-                Salesforce works across every industry — but the configuration, terminology, and workflows
+                Salesforce works across every industry - but the configuration, terminology, and workflows
                 that make it valuable are different for a manufacturer than a distributor. We bring
                 industry-specific experience, not generic CRM advice.
               </p>
@@ -89,7 +89,7 @@ export default function IndustriesPage() {
         <section className="py-16 lg:py-24 bg-gradient-to-br from-background via-primary/5 to-background">
           <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
             <h2 className="text-2xl lg:text-3xl font-bold text-foreground text-center mb-12">
-              Common <span className="text-primary">Challenges — and How We Solve Them</span>
+              Common <span className="text-primary">Challenges - and How We Solve Them</span>
             </h2>
 
             <div className="space-y-8">
@@ -146,7 +146,7 @@ export default function IndustriesPage() {
               Don't See Your Industry?
             </h2>
             <p className="text-muted-foreground leading-relaxed mb-8">
-              Salesforce is industry-agnostic — and so are we. Whatever vertical you're in,
+              Salesforce is industry-agnostic - and so are we. Whatever vertical you're in,
               the fundamentals of good CRM administration apply. If you have Salesforce,
               we can help you get more from it.
             </p>

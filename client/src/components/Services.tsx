@@ -13,7 +13,7 @@ const primaryServices = [
     title: "Fractional Salesforce Administration",
     badge: "Retainer-Based",
     description:
-      "Get a certified Salesforce admin on your team without the cost of a full-time hire. Ongoing administration, user support, data management, and continuous optimization — all under a flexible monthly retainer.",
+      "Get a certified Salesforce admin on your team without the cost of a full-time hire. Ongoing administration, user support, data management, and continuous optimization - all under a flexible monthly retainer.",
     features: ["Ongoing Admin Support", "User & Permission Management", "Data Quality & Maintenance", "Reports & Dashboards", "Release Management"],
   },
   {
@@ -22,7 +22,7 @@ const primaryServices = [
     title: "Salesforce Consulting & Implementation",
     badge: "Project-Based",
     description:
-      "From greenfield implementations to complex customizations, we design and build Salesforce solutions that fit how your business actually operates — then hand them off with documentation and training.",
+      "From greenfield implementations to complex customizations, we design and build Salesforce solutions that fit how your business actually operates - then hand them off with documentation and training.",
     features: ["Implementation & Setup", "Custom Development", "Integration Services", "Process Automation", "Training & Handoff"],
   },
 ];

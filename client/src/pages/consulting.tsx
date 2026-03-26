@@ -14,7 +14,7 @@ const deliverables = [
   {
     icon: Layers,
     title: "Implementation & Setup",
-    description: "Full Salesforce implementations configured around your business processes — from initial data model design through go-live.",
+    description: "Full Salesforce implementations configured around your business processes - from initial data model design through go-live.",
   },
   {
     icon: Puzzle,
@@ -29,14 +29,14 @@ const deliverables = [
   {
     icon: BookOpen,
     title: "Training & Documentation",
-    description: "Hands-on training sessions and process documentation so your team can use the system confidently after handoff — and onboard new users independently.",
+    description: "Hands-on training sessions and process documentation so your team can use the system confidently after handoff - and onboard new users independently.",
   },
 ];
 
 const process = [
   { step: "01", title: "Discovery", description: "We learn your business, your processes, and what success looks like. No assumptions." },
   { step: "02", title: "Design", description: "We map out the solution architecture and get your sign-off before a line of configuration is written." },
-  { step: "03", title: "Build", description: "We configure, test, and iterate — keeping you informed at every milestone." },
+  { step: "03", title: "Build", description: "We configure, test, and iterate - keeping you informed at every milestone." },
   { step: "04", title: "Deploy & Train", description: "Go-live with hands-on training and documentation. You leave knowing how to use what we built." },
 ];
 
@@ -45,7 +45,7 @@ export default function ConsultingPage() {
     <div className="min-h-screen bg-background">
       <SEO
         title="Salesforce Consulting & Implementation | ConsultTech CRM"
-        description="Project-based Salesforce consulting and implementation services. From greenfield builds to complex integrations — designed around your business, delivered with documentation and training."
+        description="Project-based Salesforce consulting and implementation services. From greenfield builds to complex integrations - designed around your business, delivered with documentation and training."
         path="/services/consulting"
       />
       <Navigation calendarLink={CALENDAR_LINK} />
@@ -62,7 +62,7 @@ export default function ConsultingPage() {
               <span className="block text-primary">&amp; Implementation</span>
             </h1>
             <p className="text-lg text-muted-foreground mb-8 max-w-2xl mx-auto leading-relaxed">
-              Purpose-built Salesforce implementations designed around your business — not a generic template.
+              Purpose-built Salesforce implementations designed around your business - not a generic template.
               From initial setup through integration, training, and handoff.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
@@ -130,7 +130,7 @@ export default function ConsultingPage() {
             <div className="mt-10 p-6 rounded-xl border border-primary/20 bg-primary/5">
               <p className="text-muted-foreground text-sm leading-relaxed flex items-start gap-2">
                 <CheckCircle className="w-4 h-4 text-primary mt-0.5 flex-shrink-0" />
-                Many clients follow a consulting engagement with an ongoing fractional admin retainer — ensuring what
+                Many clients follow a consulting engagement with an ongoing fractional admin retainer - ensuring what
                 we build keeps running well as your business evolves.
               </p>
             </div>
@@ -138,7 +138,7 @@ export default function ConsultingPage() {
             <div className="text-center mt-10">
               <Button size="lg" asChild>
                 <Link href="/contact">
-                  Start with a Free Health Check
+                  Ready to Get Started?
                   <ArrowRight className="w-5 h-5 ml-2" />
                 </Link>
               </Button>

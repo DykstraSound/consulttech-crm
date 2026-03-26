@@ -86,7 +86,7 @@ export default function About() {
           </h2>
           <p className="text-lg text-muted-foreground max-w-3xl mx-auto leading-relaxed">
             A specialized consultancy dedicated to helping small and mid-sized businesses
-            get more from Salesforce — without the overhead of a full-time hire.
+            get more from Salesforce - without the overhead of a full-time hire.
           </p>
         </div>
 
@@ -100,7 +100,7 @@ export default function About() {
               <p className="text-muted-foreground leading-relaxed">
                 To empower businesses with the right CRM strategies and implementations
                 that enhance customer relationships, streamline operations, and accelerate
-                growth. We believe in building long-term partnerships — providing ongoing
+                growth. We believe in building long-term partnerships - providing ongoing
                 fractional support and expertise so you never have to navigate Salesforce alone.
               </p>
             </CardContent>
@@ -167,7 +167,7 @@ export default function About() {
                 </p>
                 <p className="text-lg text-muted-foreground leading-relaxed">
                   Whether you need ongoing fractional administration, a focused implementation project,
-                  or help integrating Salesforce with your other tools — I'm here to make it work for your business.
+                  or help integrating Salesforce with your other tools - I'm here to make it work for your business.
                 </p>
               </div>
             </div>

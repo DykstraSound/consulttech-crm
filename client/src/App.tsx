@@ -13,9 +13,12 @@ import ContactPage from "@/pages/contact";
 import FractionalAdminPage from "@/pages/fractional-admin";
 import ConsultingPage from "@/pages/consulting";
 import NotFound from "@/pages/not-found";
+import ScrollToTop from "@/components/ScrollToTop";
 
 function Router() {
   return (
+    <>
+    <ScrollToTop />
     <Switch>
       <Route path="/" component={Home} />
       <Route path="/about" component={AboutPage} />
@@ -26,6 +29,7 @@ function Router() {
       <Route path="/contact" component={ContactPage} />
       <Route component={NotFound} />
     </Switch>
+    </>
   );
 }
 

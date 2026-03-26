@@ -25,7 +25,7 @@ export default function Home() {
         <Hero calendarLink={CALENDAR_LINK} />
         <HowItWorks />
 
-        {/* Who We Help — industries teaser */}
+        {/* Who We Help -industries teaser */}
         <section className="py-16 lg:py-24 bg-gradient-to-br from-background via-background to-primary/5">
           <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="text-center mb-12">
@@ -33,7 +33,7 @@ export default function Home() {
                 Who We <span className="text-primary">Help</span>
               </h2>
               <p className="text-lg text-muted-foreground max-w-3xl mx-auto leading-relaxed">
-                Deep experience in the verticals where CRM complexity is highest — and the stakes are real.
+                Deep experience in the verticals where CRM complexity is highest - and the stakes are real.
               </p>
             </div>
             <Industries />

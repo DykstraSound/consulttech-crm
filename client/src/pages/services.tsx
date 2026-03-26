@@ -10,7 +10,7 @@ export default function ServicesPage() {
   return (
     <div className="min-h-screen bg-background">
       <SEO
-        title="Fractional Salesforce Services — Retainer & Projects | ConsultTech CRM"
+        title="Fractional Salesforce Services - Retainer &amp; Projects | ConsultTech CRM"
         description="Fractional Salesforce administration on retainer or project-based consulting and implementation. Certified expertise for manufacturing, construction, and distribution businesses."
         path="/services"
       />

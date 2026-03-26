@@ -54,7 +54,7 @@ export default function Contact({ calendarLink: _calendarLink }: ContactProps) {
   const [isLoading, setIsLoading] = useState(false);
   const formRef = useRef<HTMLFormElement>(null);
 
-  // UTM refs — hidden inputs populated from URL params
+  // UTM refs -hidden inputs populated from URL params
   const utmSourceRef = useRef<HTMLInputElement>(null);
   const utmMediumRef = useRef<HTMLInputElement>(null);
   const utmCampaignRef = useRef<HTMLInputElement>(null);
@@ -130,7 +130,7 @@ export default function Contact({ calendarLink: _calendarLink }: ContactProps) {
           </h2>
           <p className="text-lg text-muted-foreground max-w-3xl mx-auto leading-relaxed">
             Tell us a bit about your business and your biggest Salesforce challenge. We'll
-            review your situation and come back with a clear, honest assessment — no sales pitch.
+            review your situation and come back with a clear, honest assessment - no sales pitch.
           </p>
         </div>
 
@@ -161,7 +161,7 @@ export default function Contact({ calendarLink: _calendarLink }: ContactProps) {
               ) : (
                 <Form {...form}>
                   <form ref={formRef} onSubmit={form.handleSubmit(onSubmit)} className="space-y-4">
-                    {/* Hidden UTM fields — populated from URL params on mount */}
+                    {/* Hidden UTM fields -populated from URL params on mount */}
                     <input type="hidden" name="utm_source" ref={utmSourceRef} />
                     <input type="hidden" name="utm_medium" ref={utmMediumRef} />
                     <input type="hidden" name="utm_campaign" ref={utmCampaignRef} />
@@ -320,7 +320,7 @@ export default function Contact({ calendarLink: _calendarLink }: ContactProps) {
                   </li>
                   <li className="flex items-start gap-2">
                     <CheckCircle className="w-4 h-4 text-primary mt-0.5 flex-shrink-0" />
-                    <span>A prioritized action plan — no fluff, no hard sell</span>
+                    <span>A prioritized action plan - no fluff, no hard sell</span>
                   </li>
                   <li className="flex items-start gap-2">
                     <CheckCircle className="w-4 h-4 text-primary mt-0.5 flex-shrink-0" />
@@ -337,7 +337,7 @@ export default function Contact({ calendarLink: _calendarLink }: ContactProps) {
                 </h3>
                 <p className="text-muted-foreground text-sm mb-4 leading-relaxed">
                   Schedule a 20-minute intro call. We'll learn about your situation and see if
-                  we're the right fit — no pressure.
+                  we're the right fit - no pressure.
                 </p>
                 <Button asChild variant="outline" className="w-full" data-testid="button-schedule-contact">
                   <a href="https://calendar.app.google/BJd5zjhMD5ZXctAx8" target="_blank" rel="noopener noreferrer">
@@ -364,7 +364,7 @@ export default function Contact({ calendarLink: _calendarLink }: ContactProps) {
                   </li>
                   <li className="flex items-start gap-2">
                     <CheckCircle className="w-4 h-4 text-primary mt-0.5 flex-shrink-0" />
-                    <span>Fractional model — expert support without the full-time overhead</span>
+                    <span>Fractional model - expert support without the full-time overhead</span>
                   </li>
                   <li className="flex items-start gap-2">
                     <CheckCircle className="w-4 h-4 text-primary mt-0.5 flex-shrink-0" />

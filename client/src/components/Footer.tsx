@@ -80,7 +80,9 @@ export default function Footer({ calendarLink: _calendarLink }: FooterProps) {
               </li>
               <li>
                 <a
-                  href="#"
+                  href="https://www.linkedin.com/company/consulttech-crm"
+                  target="_blank"
+                  rel="noopener noreferrer"
                   className="flex items-center gap-2 text-sm text-muted-foreground hover:text-primary transition-colors"
                   data-testid="footer-link-linkedin"
                 >

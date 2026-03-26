@@ -3,7 +3,7 @@ const steps = [
     number: "01",
     title: "Audit",
     description:
-      "We start with a free Salesforce Health Check — reviewing your current setup, identifying gaps, and mapping what's holding your team back.",
+      "We start with a free Salesforce Health Check - reviewing your current setup, identifying gaps, and mapping what's holding your team back.",
   },
   {
     number: "02",
@@ -15,7 +15,7 @@ const steps = [
     number: "03",
     title: "Execute",
     description:
-      "We implement the plan — whether that means configuring automations, cleaning data, building reports, or handling a full implementation.",
+      "We implement the plan - whether that means configuring automations, cleaning data, building reports, or handling a full implementation.",
   },
   {
     number: "04",
@@ -38,7 +38,7 @@ export default function HowItWorks() {
             How It <span className="text-primary">Works</span>
           </h2>
           <p className="text-lg text-muted-foreground max-w-3xl mx-auto leading-relaxed">
-            From first conversation to long-term partnership — a simple, proven process
+            From first conversation to long-term partnership - a simple, proven process
           </p>
         </div>
 

@@ -1,23 +1,23 @@
-// Testimonials section — hidden until real testimonials are available.
+// Testimonials section - hidden until real testimonials are available.
 // To show: remove the `hidden` class from the outer section.
 // Testimonial cards are pre-styled; replace placeholder content with real quotes.
 
 const testimonials = [
   {
     quote:
-      "Placeholder — replace with a real client testimonial once available.",
+      "Placeholder - replace with a real client testimonial once available.",
     author: "Client Name",
     title: "Title, Company",
   },
   {
     quote:
-      "Placeholder — replace with a real client testimonial once available.",
+      "Placeholder - replace with a real client testimonial once available.",
     author: "Client Name",
     title: "Title, Company",
   },
   {
     quote:
-      "Placeholder — replace with a real client testimonial once available.",
+      "Placeholder - replace with a real client testimonial once available.",
     author: "Client Name",
     title: "Title, Company",
   },

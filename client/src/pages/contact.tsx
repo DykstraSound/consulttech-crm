@@ -10,7 +10,7 @@ export default function ContactPage() {
     <div className="min-h-screen bg-background">
       <SEO
         title="Free Salesforce Health Check | ConsultTech CRM"
-        description="Request your free Salesforce Health Check. We'll review your current setup and give you a clear, actionable assessment — no commitment, no sales pitch."
+        description="Request your free Salesforce Health Check. We'll review your current setup and give you a clear, actionable assessment - no commitment, no sales pitch."
         path="/contact"
       />
       <Navigation calendarLink={CALENDAR_LINK} />

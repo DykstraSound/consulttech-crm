@@ -25,7 +25,7 @@ export default function Hero({ calendarLink }: HeroProps) {
         <img
           src={logoImage}
           alt="ConsultTech CRM"
-          className="h-48 md:h-64 lg:h-80 w-auto mx-auto mb-8"
+          className="h-64 md:h-80 lg:h-96 w-auto mx-auto mb-8"
           data-testid="img-hero-logo"
         />
 
@@ -35,7 +35,7 @@ export default function Hero({ calendarLink }: HeroProps) {
         </h1>
 
         <p className="text-lg md:text-xl text-gray-200 mb-8 max-w-2xl mx-auto leading-relaxed drop-shadow-lg">
-          Certified Salesforce expertise — on demand, without the overhead of a full-time hire.
+          Certified Salesforce expertise - on demand, without the overhead of a full-time hire.
           Serving manufacturing, construction, distribution, and beyond.
         </p>
 
@@ -52,18 +52,6 @@ export default function Hero({ calendarLink }: HeroProps) {
             </Link>
           </Button>
 
-          <Button
-            variant="outline"
-            size="lg"
-            asChild
-            className="min-w-[200px] bg-[hsl(190,100%,45%)]/20 backdrop-blur-sm border-[hsl(190,100%,45%)]/50 text-white hover:bg-[hsl(190,100%,45%)]/30"
-            data-testid="button-how-it-works"
-          >
-            <a href="#how-it-works">
-              See How It Works
-              <ArrowRight className="w-5 h-5 ml-2" />
-            </a>
-          </Button>
         </div>
       </div>
     </section>
