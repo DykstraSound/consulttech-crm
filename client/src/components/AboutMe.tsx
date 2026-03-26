@@ -7,6 +7,7 @@ import sfBusinessAnalyst from "@assets/SF Business Analyst.png";
 import sfPlatformAdmin from "@assets/SF Platform Admin.png";
 import badgeAdministrator from "@assets/badge_Administrator.png";
 import badgeThemeDeveloper from "@assets/badge_Theme Developer.png";
+import dataCloudBadge from "@assets/Data Cloud Badge.png";
 
 const certifications = [
   {
@@ -15,6 +16,7 @@ const certifications = [
       { name: "Platform Administrator", icon: Shield },
       { name: "Business Analyst", icon: CheckCircle },
       { name: "Agentforce Specialist", icon: Award },
+      { name: "Data Cloud Consultant", icon: Award },
     ],
   },
   {
@@ -37,6 +39,7 @@ const certificationBadges = [
   sfAgentforceSpecialist,
   sfBusinessAnalyst,
   sfPlatformAdmin,
+  dataCloudBadge,
   badgeAdministrator,
   badgeThemeDeveloper,
 ];

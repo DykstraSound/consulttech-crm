@@ -1,14 +1,14 @@
 import { useState, useEffect } from "react";
 import { Link, useLocation } from "wouter";
 import { Button } from "@/components/ui/button";
-import { Menu, X, Calendar } from "lucide-react";
+import { Menu, X, ArrowRight } from "lucide-react";
 import logoImage from "@assets/ConsultTech Logo2 Transparent_1764386506741.png";
 
 interface NavigationProps {
   calendarLink: string;
 }
 
-export default function Navigation({ calendarLink }: NavigationProps) {
+export default function Navigation({ calendarLink: _calendarLink }: NavigationProps) {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
   const [location] = useLocation();
@@ -23,9 +23,9 @@ export default function Navigation({ calendarLink }: NavigationProps) {
 
   const navLinks = [
     { label: "Home", path: "/" },
-    { label: "About Us", path: "/about-us" },
-    { label: "About Me", path: "/about-me" },
+    { label: "About", path: "/about" },
     { label: "Services", path: "/services" },
+    { label: "Industries", path: "/industries" },
     { label: "Contact", path: "/contact" },
   ];
 
@@ -70,11 +70,11 @@ export default function Navigation({ calendarLink }: NavigationProps) {
           </div>
 
           <div className="hidden md:flex items-center gap-3">
-            <Button asChild data-testid="button-schedule-nav">
-              <a href={calendarLink} target="_blank" rel="noopener noreferrer">
-                <Calendar className="w-4 h-4 mr-2" />
-                Schedule a Call
-              </a>
+            <Button asChild data-testid="button-health-check-nav">
+              <Link href="/contact">
+                Free Health Check
+                <ArrowRight className="w-4 h-4 ml-2" />
+              </Link>
             </Button>
           </div>
 
@@ -108,11 +108,11 @@ export default function Navigation({ calendarLink }: NavigationProps) {
                 {link.label}
               </Link>
             ))}
-            <Button asChild className="w-full mt-4" data-testid="button-schedule-mobile">
-              <a href={calendarLink} target="_blank" rel="noopener noreferrer">
-                <Calendar className="w-4 h-4 mr-2" />
-                Schedule a Call
-              </a>
+            <Button asChild className="w-full mt-4" data-testid="button-health-check-mobile">
+              <Link href="/contact" onClick={() => setIsMenuOpen(false)}>
+                Free Health Check
+                <ArrowRight className="w-4 h-4 ml-2" />
+              </Link>
             </Button>
           </div>
         </div>

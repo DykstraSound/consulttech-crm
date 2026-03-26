@@ -20,7 +20,7 @@ export default function Hero({ calendarLink }: HeroProps) {
         style={{ backgroundImage: `url(${heroBackground})` }}
       />
       <div className="absolute inset-0 bg-black/70 md:bg-black/60" />
-      
+
       <div className="relative z-10 max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center py-20">
         <img
           src={logoImage}
@@ -28,41 +28,41 @@ export default function Hero({ calendarLink }: HeroProps) {
           className="h-48 md:h-64 lg:h-80 w-auto mx-auto mb-8"
           data-testid="img-hero-logo"
         />
-        
+
         <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-6 leading-tight drop-shadow-lg">
-          Expert CRM Consulting for
-          <span className="block text-primary">Your Business Success</span>
+          Fractional Salesforce Admin &amp; Consulting
+          <span className="block text-primary">for Growing Businesses</span>
         </h1>
-        
+
         <p className="text-lg md:text-xl text-gray-200 mb-8 max-w-2xl mx-auto leading-relaxed drop-shadow-lg">
-          Certified Salesforce, StoreConnect, and AWS consultant helping businesses 
-          optimize CRM implementations and drive growth through secure and efficienttechnology.
+          Certified Salesforce expertise — on demand, without the overhead of a full-time hire.
+          Serving manufacturing, construction, distribution, and beyond.
         </p>
-        
+
         <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
           <Button
             size="lg"
             asChild
-            className="min-w-[200px]"
-            data-testid="button-schedule-hero"
+            className="min-w-[220px]"
+            data-testid="button-health-check-hero"
           >
-            <a href={calendarLink} target="_blank" rel="noopener noreferrer">
-              <Calendar className="w-5 h-5 mr-2" />
-              Schedule a Call
-            </a>
+            <Link href="/contact">
+              Get Your Free Health Check
+              <ArrowRight className="w-5 h-5 ml-2" />
+            </Link>
           </Button>
-          
+
           <Button
             variant="outline"
             size="lg"
             asChild
             className="min-w-[200px] bg-[hsl(190,100%,45%)]/20 backdrop-blur-sm border-[hsl(190,100%,45%)]/50 text-white hover:bg-[hsl(190,100%,45%)]/30"
-            data-testid="button-learn-more"
+            data-testid="button-how-it-works"
           >
-            <Link href="/about-us">
-              Learn More
+            <a href="#how-it-works">
+              See How It Works
               <ArrowRight className="w-5 h-5 ml-2" />
-            </Link>
+            </a>
           </Button>
         </div>
       </div>
