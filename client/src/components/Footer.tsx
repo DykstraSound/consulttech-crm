@@ -1,19 +1,19 @@
 import { Link } from "wouter";
 import logoImage from "@assets/ConsultTech Logo2 Transparent_1764386506741.png";
-import { Linkedin, Mail, Calendar } from "lucide-react";
+import { Linkedin, Mail, ArrowRight } from "lucide-react";
 
 interface FooterProps {
   calendarLink: string;
 }
 
-export default function Footer({ calendarLink }: FooterProps) {
+export default function Footer({ calendarLink: _calendarLink }: FooterProps) {
   const currentYear = new Date().getFullYear();
 
   const quickLinks = [
     { label: "Home", path: "/" },
-    { label: "About Us", path: "/about-us" },
-    { label: "About Me", path: "/about-me" },
+    { label: "About", path: "/about" },
     { label: "Services", path: "/services" },
+    { label: "Industries", path: "/industries" },
     { label: "Contact", path: "/contact" },
   ];
 
@@ -28,9 +28,9 @@ export default function Footer({ calendarLink }: FooterProps) {
               className="h-36 w-auto mb-4"
             />
             <p className="text-sm text-muted-foreground leading-relaxed">
-              Expert CRM consulting services specializing in Salesforce, 
-              StoreConnect, and AWS. Helping businesses optimize their 
-              customer relationship management.
+              Fractional Salesforce administration and consulting for small
+              and mid-sized businesses in manufacturing, construction,
+              distribution, and beyond.
             </p>
           </div>
 
@@ -59,16 +59,14 @@ export default function Footer({ calendarLink }: FooterProps) {
             </h3>
             <ul className="space-y-3">
               <li>
-                <a
-                  href={calendarLink}
-                  target="_blank"
-                  rel="noopener noreferrer"
+                <Link
+                  href="/contact"
                   className="flex items-center gap-2 text-sm text-muted-foreground hover:text-primary transition-colors"
-                  data-testid="footer-link-calendar"
+                  data-testid="footer-link-health-check"
                 >
-                  <Calendar className="w-4 h-4" />
-                  Schedule a Call
-                </a>
+                  <ArrowRight className="w-4 h-4" />
+                  Free Health Check
+                </Link>
               </li>
               <li>
                 <Link
@@ -82,7 +80,9 @@ export default function Footer({ calendarLink }: FooterProps) {
               </li>
               <li>
                 <a
-                  href="#"
+                  href="https://www.linkedin.com/company/consulttech-crm"
+                  target="_blank"
+                  rel="noopener noreferrer"
                   className="flex items-center gap-2 text-sm text-muted-foreground hover:text-primary transition-colors"
                   data-testid="footer-link-linkedin"
                 >
