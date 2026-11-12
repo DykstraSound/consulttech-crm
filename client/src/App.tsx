@@ -12,6 +12,7 @@ import IndustriesPage from "@/pages/industries";
 import ContactPage from "@/pages/contact";
 import FractionalAdminPage from "@/pages/fractional-admin";
 import ConsultingPage from "@/pages/consulting";
+import HowItWorksPage from "@/pages/how-it-works";
 import NotFound from "@/pages/not-found";
 import ScrollToTop from "@/components/ScrollToTop";
 
@@ -22,6 +23,7 @@ export function AppRoutes() {
     <Switch>
       <Route path="/" component={Home} />
       <Route path="/about" component={AboutPage} />
+      <Route path="/how-it-works" component={HowItWorksPage} />
       <Route path="/services" component={ServicesPage} />
       <Route path="/services/fractional-admin" component={FractionalAdminPage} />
       <Route path="/services/consulting" component={ConsultingPage} />

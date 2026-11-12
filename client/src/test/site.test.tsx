@@ -41,7 +41,10 @@ describe("navigation", () => {
   });
 });
 
-const PAGES = [{ path: "/", h1: /the vision's usually right/i }];
+const PAGES = [
+  { path: "/", h1: /the vision's usually right/i },
+  { path: "/how-it-works", h1: /how it works/i },
+];
 
 describe.each(PAGES)("page $path", ({ path, h1 }) => {
   it("renders its h1", () => {
