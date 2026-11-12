@@ -1,5 +1,5 @@
 import Navigation from "@/components/Navigation";
-import Industries from "@/components/Industries";
+import { IndustriesTeaser } from "@/components/Industries";
 import LeadMagnetBand from "@/components/LeadMagnetBand";
 import Footer from "@/components/Footer";
 import SEO from "@/components/SEO";
@@ -80,7 +80,7 @@ export default function IndustriesPage() {
                 industry-specific experience, not generic CRM advice.
               </p>
             </div>
-            <Industries />
+            <IndustriesTeaser />
           </div>
         </section>
 

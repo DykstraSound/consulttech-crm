@@ -40,3 +40,23 @@ describe("navigation", () => {
     expect(labels).toEqual(NAV_LINKS.map((l) => l.label));
   });
 });
+
+const PAGES = [{ path: "/", h1: /the vision's usually right/i }];
+
+describe.each(PAGES)("page $path", ({ path, h1 }) => {
+  it("renders its h1", () => {
+    renderAt(path);
+    expect(screen.getByRole("heading", { level: 1, name: h1 })).toBeInTheDocument();
+  });
+  it("offers the Punch List as a full-page link", () => {
+    const { container } = renderAt(path);
+    expect(container.querySelectorAll(`a[href="${PUNCH_LIST_PATH}"]`).length).toBeGreaterThan(0);
+  });
+  it("has no old positioning or old booking link", () => {
+    const { container } = renderAt(path);
+    const text = container.textContent ?? "";
+    expect(text).not.toMatch(/health check/i);
+    expect(text).not.toMatch(/fractional salesforce/i);
+    expect(container.querySelector('a[href*="calendar.app.google"]')).toBeNull();
+  });
+});

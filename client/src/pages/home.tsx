@@ -1,57 +1,56 @@
-import Navigation from "@/components/Navigation";
+/* Home page: hero, symptoms, process, proof, platform choice, industries and closing CTA. */
+import PageLayout from "@/components/PageLayout";
 import Hero from "@/components/Hero";
+import SoundFamiliar from "@/components/SoundFamiliar";
 import HowItWorks from "@/components/HowItWorks";
-import Industries from "@/components/Industries";
-import LeadMagnetBand from "@/components/LeadMagnetBand";
-import Testimonials from "@/components/Testimonials";
-import Footer from "@/components/Footer";
-import SEO from "@/components/SEO";
-import { Link } from "wouter";
-import { Button } from "@/components/ui/button";
-import { ArrowRight } from "lucide-react";
+import ProofBand from "@/components/ProofBand";
+import PickYourRide from "@/components/PickYourRide";
+import SectionHeading from "@/components/SectionHeading";
+import { IndustriesTeaser, IndustriesLink } from "@/components/Industries";
+import CtaBand from "@/components/CtaBand";
+import { SITE_URL } from "@/lib/site";
 
-const CALENDAR_LINK = "https://calendar.app.google/BJd5zjhMD5ZXctAx8";
+const JSON_LD = {
+  "@context": "https://schema.org",
+  "@type": "ProfessionalService",
+  name: "ConsultTech CRM",
+  url: SITE_URL,
+  description:
+    "Zoho and Salesforce CRM implementation for construction, manufacturing and automotive aftermarket businesses with 100 people or fewer.",
+  areaServed: "US",
+  address: { "@type": "PostalAddress", addressLocality: "Wildersville", addressRegion: "TN", addressCountry: "US" },
+  founder: { "@type": "Person", name: "Travis Dykstra" },
+  sameAs: ["https://www.linkedin.com/in/travisjdykstra"],
+};
 
 export default function Home() {
   return (
-    <div className="min-h-screen bg-background">
-      <SEO
-        title="Fractional Salesforce Admin & Consulting | ConsultTech CRM"
-        description="Certified fractional Salesforce administrator and consultant serving manufacturing, construction, and distribution businesses. Get your free Salesforce Health Check today."
-        path="/"
-      />
-      <Navigation />
-      <main>
-        <Hero calendarLink={CALENDAR_LINK} />
-        <HowItWorks />
-
-        {/* Who We Help -industries teaser */}
-        <section className="py-16 lg:py-24 bg-gradient-to-br from-background via-background to-primary/5">
-          <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="text-center mb-12">
-              <h2 className="text-3xl lg:text-4xl font-bold text-foreground mb-4">
-                Who We <span className="text-primary">Help</span>
-              </h2>
-              <p className="text-lg text-muted-foreground max-w-3xl mx-auto leading-relaxed">
-                Deep experience in the verticals where CRM complexity is highest - and the stakes are real.
-              </p>
-            </div>
-            <Industries />
-            <div className="text-center mt-10">
-              <Button asChild variant="outline" className="border-primary/40 hover:bg-primary/5">
-                <Link href="/industries">
-                  See All Industries We Serve
-                  <ArrowRight className="w-4 h-4 ml-2" />
-                </Link>
-              </Button>
-            </div>
-          </div>
-        </section>
-
-        <LeadMagnetBand />
-        <Testimonials />
-      </main>
-      <Footer />
-    </div>
+    <PageLayout
+      padTop={false}
+      seo={{
+        title: "ConsultTech CRM | You've Got the Plan. I Build the System Behind It.",
+        description:
+          "Zoho and Salesforce CRM for construction, manufacturing and automotive aftermarket businesses with 100 people or fewer. Start with a free 30-minute Punch List call and a written plan in 48 hours.",
+        path: "/",
+        jsonLd: JSON_LD,
+      }}
+    >
+      <Hero />
+      <SoundFamiliar />
+      <HowItWorks />
+      <ProofBand />
+      <PickYourRide />
+      <section className="py-16 lg:py-24">
+        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+          <SectionHeading
+            title={<>Who I <span className="text-primary">help</span></>}
+            sub="Scrappy, blue-collar businesses that know two things: something's broken, and where they want to go."
+          />
+          <IndustriesTeaser />
+          <IndustriesLink />
+        </div>
+      </section>
+      <CtaBand />
+    </PageLayout>
   );
 }
