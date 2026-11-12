@@ -1,1 +1,7 @@
-/*    /index.html   200 
+/services                    /how-it-works   301
+/services/fractional-admin   /how-it-works   301
+/services/consulting         /how-it-works   301
+/industries                  /who-i-help     301
+/about-me                    /about          301
+/about-us                    /about          301
+/*                           /index.html     200

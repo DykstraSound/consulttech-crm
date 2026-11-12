@@ -5,4 +5,5 @@ import { cleanup } from "@testing-library/react";
 
 afterEach(() => cleanup());
 
-window.scrollTo = () => {};
+// Guarded: node-environment tests (config.test.ts) have no window.
+if (typeof window !== "undefined") window.scrollTo = () => {};
