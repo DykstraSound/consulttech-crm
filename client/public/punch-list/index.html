@@ -31,6 +31,17 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
 
+  <script>
+    /* Save landing UTM tags for the visit; mirrors captureUtm() in client/src/lib/utm.ts (same "ct_utm" key). */
+    (function () {
+      try {
+        var p = new URLSearchParams(location.search), keys = ["utm_source", "utm_medium", "utm_campaign", "utm_content"], v = {}, any = false;
+        keys.forEach(function (k) { v[k] = (p.get(k) || "").slice(0, 255); if (v[k]) any = true; });
+        if (any) sessionStorage.setItem("ct_utm", JSON.stringify(v));
+      } catch (e) { /* tracking is best-effort */ }
+    })();
+  </script>
+
   <style>
     /* Mirrors the site's tokens in client/src/index.css */
     :root {

@@ -5,6 +5,7 @@ import { renderAt } from "./render";
 import PunchListButton from "@/components/PunchListButton";
 import TalkFirstCard from "@/components/TalkFirstCard";
 import { BOOKING_URL, PUNCH_LIST_PATH, NAV_LINKS, ZOHO_WEBFORM } from "@/lib/site";
+import { UTM_FIELDS, captureUtm, readUtm } from "@/lib/utm";
 
 describe("harness", () => {
   it("renders the current home page", () => {
@@ -79,7 +80,7 @@ describe("intake form (Zoho Web-to-Lead)", () => {
   });
   it("sends every field under its Zoho name", () => {
     const { container } = renderAt("/contact");
-    for (const name of ["First Name", "Last Name", "Email", "Company", "LEADCF7", "LEADCF8", "LEADCF9", "LEADCF10", "Description"]) {
+    for (const name of ["First Name", "Last Name", "Email", "Company", "LEADCF7", "Industry", "LEADCF9", "LEADCF10", "Description", ...Object.values(UTM_FIELDS)]) {
       expect(container.querySelector(`[name="${name}"]`), name).not.toBeNull();
     }
   });
@@ -92,5 +93,28 @@ describe("intake form (Zoho Web-to-Lead)", () => {
   it("keeps the talk-first card on the contact page", () => {
     renderAt("/contact");
     expect(screen.getByRole("link", { name: /book a call/i })).toHaveAttribute("href", BOOKING_URL);
+  });
+});
+
+describe("UTM tracking", () => {
+  it("captures utm_* tags from the landing URL and keeps them for the session", () => {
+    sessionStorage.clear();
+    captureUtm("?utm_source=linkedin&utm_medium=featured&utm_campaign=punch-list-launch&other=x");
+    captureUtm(""); // a later page with no tags must not wipe them
+    expect(readUtm()).toEqual({
+      utm_source: "linkedin",
+      utm_medium: "featured",
+      utm_campaign: "punch-list-launch",
+      utm_content: "",
+    });
+  });
+  it("sends the captured tags with the intake form under Zoho's field names", () => {
+    sessionStorage.clear();
+    captureUtm("?utm_source=linkedin&utm_content=dm-opener-2");
+    const { container } = renderAt("/contact");
+    expect(container.querySelector(`input[name="${UTM_FIELDS.utm_source}"]`)).toHaveValue("linkedin");
+    expect(container.querySelector(`input[name="${UTM_FIELDS.utm_content}"]`)).toHaveValue("dm-opener-2");
+    expect(container.querySelector(`input[name="${UTM_FIELDS.utm_medium}"]`)).toHaveValue("");
+    sessionStorage.clear();
   });
 });

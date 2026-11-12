@@ -3,6 +3,7 @@
   The form is a plain HTML POST to Zoho CRM Web-to-Lead (see ZOHO_WEBFORM in lib/site.ts). react-hook-form
   validates first, then the native form submits. Zoho creates the Lead, emails Travis, and redirects back to
   /contact?submitted=1, which shows the thank-you state. Input `name`s are Zoho's, not the RHF field names.
+  UTM tags captured on landing (lib/utm.ts) ride along as hidden inputs.
 */
 import { useRef } from "react";
 import { useForm, type Control } from "react-hook-form";
@@ -16,6 +17,7 @@ import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from "
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import TalkFirstCard from "@/components/TalkFirstCard";
 import { ZOHO_WEBFORM } from "@/lib/site";
+import { UTM_FIELDS, UTM_KEYS, readUtm } from "@/lib/utm";
 import { intakeSchema, type IntakeValues } from "@/lib/schema";
 
 const WHAT_YOU_GET = [
@@ -113,6 +115,7 @@ function CheckList({ items }: { items: string[] }) {
 export default function Contact() {
   const formRef = useRef<HTMLFormElement>(null);
   const submitted = new URLSearchParams(window.location.search).get("submitted") === "1";
+  const utm = readUtm();
 
   const form = useForm<IntakeValues>({
     resolver: zodResolver(intakeSchema),
@@ -155,6 +158,9 @@ export default function Contact() {
                   {Object.entries(ZOHO_WEBFORM.hidden).map(([name, value]) => (
                     <input key={name} type="hidden" name={name} value={value} readOnly />
                   ))}
+                  {UTM_KEYS.map((k) => (
+                    <input key={k} type="hidden" name={UTM_FIELDS[k]} value={utm[k]} readOnly />
+                  ))}
                   <input type="text" name={ZOHO_WEBFORM.honeypot} defaultValue="" tabIndex={-1} autoComplete="off" aria-hidden="true" className="hidden" />
 
                   <div className="grid sm:grid-cols-2 gap-4">
@@ -166,7 +172,7 @@ export default function Contact() {
 
                   <div className="grid sm:grid-cols-2 gap-4">
                     <SelectField control={form.control} name="companySize" zohoName="LEADCF7" label="Company size" placeholder="How many people?" options={ZOHO_WEBFORM.options.companySize} />
-                    <SelectField control={form.control} name="industry" zohoName="LEADCF8" label="Industry" placeholder="Pick one" options={ZOHO_WEBFORM.options.industry} />
+                    <SelectField control={form.control} name="industry" zohoName="Industry" label="Industry" placeholder="Pick one" options={ZOHO_WEBFORM.options.industry} />
                   </div>
                   <SelectField control={form.control} name="currentTools" zohoName="LEADCF9" label="What are you running on today?" placeholder="Pick the closest" options={ZOHO_WEBFORM.options.currentTools} />
 
