@@ -8,9 +8,10 @@ export interface SEOProps {
   path?: string;
   image?: string;
   jsonLd?: Record<string, unknown>;
+  noindex?: boolean;
 }
 
-export default function SEO({ title, description, path = "", image = DEFAULT_OG_IMAGE, jsonLd }: SEOProps) {
+export default function SEO({ title, description, path = "", image = DEFAULT_OG_IMAGE, jsonLd, noindex }: SEOProps) {
   const fullUrl = `${SITE_URL}${path}`;
   return (
     <Helmet>
@@ -23,6 +24,7 @@ export default function SEO({ title, description, path = "", image = DEFAULT_OG_
       <meta property="og:type" content="website" />
       <meta property="og:image" content={image} />
       <meta name="twitter:card" content="summary_large_image" />
+      {noindex && <meta name="robots" content="noindex" />}
       {jsonLd && <script type="application/ld+json">{JSON.stringify(jsonLd)}</script>}
     </Helmet>
   );

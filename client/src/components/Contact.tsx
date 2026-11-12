@@ -204,13 +204,13 @@ export default function Contact() {
           <TalkFirstCard />
           <Card className="border-primary/30 bg-gradient-to-br from-primary/10 to-transparent">
             <CardContent className="p-6">
-              <h3 className="text-lg font-semibold text-white mb-3">What's on your punch list</h3>
+              <h2 className="text-lg font-semibold text-white mb-3">What's on your punch list</h2>
               <CheckList items={WHAT_YOU_GET} />
             </CardContent>
           </Card>
           <Card className="border-border">
             <CardContent className="p-6">
-              <h3 className="text-lg font-semibold text-white mb-3">Why <span className="text-primary">ConsultTech CRM</span>?</h3>
+              <h2 className="text-lg font-semibold text-white mb-3">Why <span className="text-primary">ConsultTech CRM</span>?</h2>
               <CheckList items={WHY} />
             </CardContent>
           </Card>

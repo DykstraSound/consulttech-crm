@@ -1,6 +1,6 @@
 /* About: Travis's origin story (estimating years, the installation-errors fix), how he works, and why he went out on his own. */
 import { CheckCircle } from "lucide-react";
-import headshotImage from "@assets/HS 3_1764388153432.jpeg";
+import headshotImage from "@assets/stock_images/web/headshot.webp";
 
 const HOW_I_WORK = [
   "Platform-agnostic. Zoho or Salesforce, whichever fits your budget.",

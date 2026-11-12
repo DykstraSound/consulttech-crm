@@ -2,7 +2,7 @@
 import { Link } from "wouter";
 import { ArrowRight, Linkedin, Mail } from "lucide-react";
 import { NAV_LINKS, PUNCH_LIST_PATH } from "@/lib/site";
-import logoImage from "@assets/ConsultTech Logo2 Transparent_1764386506741.png";
+import logoImage from "@assets/logo-horizontal.png";
 
 const linkClass = "flex items-center gap-2 text-sm text-muted-foreground hover:text-primary transition-colors";
 
@@ -14,7 +14,7 @@ export default function Footer() {
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
         <div className="grid md:grid-cols-3 gap-8">
           <div>
-            <img src={logoImage} alt="ConsultTech CRM" className="h-20 w-auto mb-4" />
+            <img src={logoImage} alt="ConsultTech CRM" className="h-12 w-auto mb-4" />
             <p className="text-sm text-muted-foreground leading-relaxed">
               CRM and sales systems for construction, manufacturing and automotive aftermarket businesses with
               100 people or fewer.
@@ -25,7 +25,7 @@ export default function Footer() {
           </div>
 
           <div>
-            <h3 className="kicker mb-4">Pages</h3>
+            <h2 className="kicker mb-4">Pages</h2>
             <ul className="space-y-2">
               {NAV_LINKS.map((link) => (
                 <li key={link.path}>
@@ -38,7 +38,7 @@ export default function Footer() {
           </div>
 
           <div>
-            <h3 className="kicker mb-4">Get started</h3>
+            <h2 className="kicker mb-4">Get started</h2>
             <ul className="space-y-3">
               <li>
                 <a href={PUNCH_LIST_PATH} className={linkClass}>

@@ -9,7 +9,7 @@ export default function NotFound() {
       seo={{
         title: "Page not found | ConsultTech CRM",
         description: "That page doesn't exist. Head back to the ConsultTech CRM home page or book a free Punch List call.",
-        path: "/404",
+        noindex: true,
       }}
     >
       <section className="py-24 lg:py-32">
