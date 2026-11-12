@@ -15,7 +15,7 @@ import ConsultingPage from "@/pages/consulting";
 import NotFound from "@/pages/not-found";
 import ScrollToTop from "@/components/ScrollToTop";
 
-function Router() {
+export function AppRoutes() {
   return (
     <>
     <ScrollToTop />
@@ -40,7 +40,7 @@ function App() {
         <AuthProvider>
           <TooltipProvider>
             <Toaster />
-            <Router />
+            <AppRoutes />
           </TooltipProvider>
         </AuthProvider>
       </QueryClientProvider>
