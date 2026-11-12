@@ -1,10 +1,10 @@
 /* Site-level behaviour tests: pages, navigation, calls to action and the intake form. */
 import { describe, it, expect } from "vitest";
-import { render, screen } from "@testing-library/react";
+import { render, screen, within } from "@testing-library/react";
 import { renderAt } from "./render";
 import PunchListButton from "@/components/PunchListButton";
 import TalkFirstCard from "@/components/TalkFirstCard";
-import { BOOKING_URL, PUNCH_LIST_PATH } from "@/lib/site";
+import { BOOKING_URL, PUNCH_LIST_PATH, NAV_LINKS } from "@/lib/site";
 
 describe("harness", () => {
   it("renders the current home page", () => {
@@ -26,5 +26,17 @@ describe("shared CTAs", () => {
     expect(a).toHaveAttribute("target", "_blank");
     expect(screen.getByText(/30-minute call/i)).toBeInTheDocument();
     expect(screen.getByText(/right fit, no pressure/i)).toBeInTheDocument();
+  });
+});
+
+describe("navigation", () => {
+  it("lists the five pages in order", () => {
+    renderAt("/");
+    const nav = screen.getByTestId("navigation");
+    const labels = within(nav)
+      .getAllByRole("link")
+      .map((a) => a.textContent?.trim())
+      .filter((t) => NAV_LINKS.some((l) => l.label === t));
+    expect(labels).toEqual(NAV_LINKS.map((l) => l.label));
   });
 });

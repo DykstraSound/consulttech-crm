@@ -4,7 +4,6 @@ import LeadMagnetBand from "@/components/LeadMagnetBand";
 import Footer from "@/components/Footer";
 import SEO from "@/components/SEO";
 
-const CALENDAR_LINK = "https://calendar.app.google/BJd5zjhMD5ZXctAx8";
 
 export default function ServicesPage() {
   return (
@@ -14,12 +13,12 @@ export default function ServicesPage() {
         description="Fractional Salesforce administration on retainer or project-based consulting and implementation. Certified expertise for manufacturing, construction, and distribution businesses."
         path="/services"
       />
-      <Navigation calendarLink={CALENDAR_LINK} />
+      <Navigation />
       <main className="pt-32">
         <Services />
         <LeadMagnetBand />
       </main>
-      <Footer calendarLink={CALENDAR_LINK} />
+      <Footer />
     </div>
   );
 }

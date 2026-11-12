@@ -48,7 +48,7 @@ export default function ConsultingPage() {
         description="Project-based Salesforce consulting and implementation services. From greenfield builds to complex integrations - designed around your business, delivered with documentation and training."
         path="/services/consulting"
       />
-      <Navigation calendarLink={CALENDAR_LINK} />
+      <Navigation />
       <main className="pt-32">
 
         {/* Hero */}
@@ -148,7 +148,7 @@ export default function ConsultingPage() {
 
         <LeadMagnetBand />
       </main>
-      <Footer calendarLink={CALENDAR_LINK} />
+      <Footer />
     </div>
   );
 }

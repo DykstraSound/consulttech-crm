@@ -20,7 +20,7 @@ export default function Home() {
         description="Certified fractional Salesforce administrator and consultant serving manufacturing, construction, and distribution businesses. Get your free Salesforce Health Check today."
         path="/"
       />
-      <Navigation calendarLink={CALENDAR_LINK} />
+      <Navigation />
       <main>
         <Hero calendarLink={CALENDAR_LINK} />
         <HowItWorks />
@@ -51,7 +51,7 @@ export default function Home() {
         <LeadMagnetBand />
         <Testimonials />
       </main>
-      <Footer calendarLink={CALENDAR_LINK} />
+      <Footer />
     </div>
   );
 }

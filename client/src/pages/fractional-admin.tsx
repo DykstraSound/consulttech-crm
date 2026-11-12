@@ -49,7 +49,7 @@ export default function FractionalAdminPage() {
         description="Get a certified Salesforce administrator without a full-time hire. Ongoing support, data management, reporting, and continuous optimization on a flexible monthly retainer."
         path="/services/fractional-admin"
       />
-      <Navigation calendarLink={CALENDAR_LINK} />
+      <Navigation />
       <main className="pt-32">
 
         {/* Hero */}
@@ -135,7 +135,7 @@ export default function FractionalAdminPage() {
 
         <LeadMagnetBand />
       </main>
-      <Footer calendarLink={CALENDAR_LINK} />
+      <Footer />
     </div>
   );
 }

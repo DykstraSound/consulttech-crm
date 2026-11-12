@@ -2,16 +2,15 @@ import Navigation from "@/components/Navigation";
 import AboutMe from "@/components/AboutMe";
 import Footer from "@/components/Footer";
 
-const CALENDAR_LINK = "https://calendar.app.google/BJd5zjhMD5ZXctAx8";
 
 export default function AboutMePage() {
   return (
     <div className="min-h-screen bg-background">
-      <Navigation calendarLink={CALENDAR_LINK} />
+      <Navigation />
       <main className="pt-32">
         <AboutMe />
       </main>
-      <Footer calendarLink={CALENDAR_LINK} />
+      <Footer />
     </div>
   );
 }

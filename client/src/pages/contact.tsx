@@ -13,11 +13,11 @@ export default function ContactPage() {
         description="Request your free Salesforce Health Check. We'll review your current setup and give you a clear, actionable assessment - no commitment, no sales pitch."
         path="/contact"
       />
-      <Navigation calendarLink={CALENDAR_LINK} />
+      <Navigation />
       <main className="pt-32">
         <Contact calendarLink={CALENDAR_LINK} />
       </main>
-      <Footer calendarLink={CALENDAR_LINK} />
+      <Footer />
     </div>
   );
 }

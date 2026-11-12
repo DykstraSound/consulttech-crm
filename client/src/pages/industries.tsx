@@ -8,7 +8,6 @@ import { Button } from "@/components/ui/button";
 import { ArrowRight, CheckCircle } from "lucide-react";
 import { Card, CardContent } from "@/components/ui/card";
 
-const CALENDAR_LINK = "https://calendar.app.google/BJd5zjhMD5ZXctAx8";
 
 const industryDetails = [
   {
@@ -65,7 +64,7 @@ export default function IndustriesPage() {
         description="Fractional Salesforce administration and consulting for manufacturing, construction, distribution, and professional services companies. Industry-specific expertise, not generic CRM advice."
         path="/industries"
       />
-      <Navigation calendarLink={CALENDAR_LINK} />
+      <Navigation />
       <main className="pt-32">
 
         {/* Header */}
@@ -161,7 +160,7 @@ export default function IndustriesPage() {
 
         <LeadMagnetBand />
       </main>
-      <Footer calendarLink={CALENDAR_LINK} />
+      <Footer />
     </div>
   );
 }
