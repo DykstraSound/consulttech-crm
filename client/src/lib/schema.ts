@@ -1,13 +1,16 @@
+/* Intake form validation. react-hook-form validates client-side; the native form then posts to Zoho under Zoho's field names. */
 import { z } from "zod";
 
-// Contact form submission schema
-export const insertContactSubmissionSchema = z.object({
-    name: z.string().min(1, "Name is required"),
-    email: z.string().email("Please enter a valid email address"),
-    company: z.string().optional(),
-    industry: z.string().optional(),
-    challenge: z.string().optional(),
-    message: z.string().min(1, "Message is required"),
+export const intakeSchema = z.object({
+  firstName: z.string().min(1, "First name is required"),
+  lastName: z.string().min(1, "Last name is required"),
+  email: z.string().email("Please enter a valid email address"),
+  company: z.string().optional(),
+  companySize: z.string().optional(),
+  industry: z.string().optional(),
+  currentTools: z.string().optional(),
+  headache: z.string().min(1, "Tell me your #1 headache"),
+  description: z.string().optional(),
 });
 
-export type InsertContactSubmission = z.infer<typeof insertContactSubmissionSchema>;
+export type IntakeValues = z.infer<typeof intakeSchema>;

@@ -1,23 +1,24 @@
-import Navigation from "@/components/Navigation";
+/* Contact page: header plus the Zoho intake form and talk-first card. */
+import PageLayout from "@/components/PageLayout";
+import PageHeader from "@/components/PageHeader";
 import Contact from "@/components/Contact";
-import Footer from "@/components/Footer";
-import SEO from "@/components/SEO";
-
-const CALENDAR_LINK = "https://calendar.app.google/BJd5zjhMD5ZXctAx8";
 
 export default function ContactPage() {
   return (
-    <div className="min-h-screen bg-background">
-      <SEO
-        title="Free Salesforce Health Check | ConsultTech CRM"
-        description="Request your free Salesforce Health Check. We'll review your current setup and give you a clear, actionable assessment - no commitment, no sales pitch."
-        path="/contact"
+    <PageLayout
+      seo={{
+        title: "Get Your Free Punch List | ConsultTech CRM",
+        description:
+          "Book a free 30-minute Punch List call, or send a few details first. You'll get a written plan for your CRM and your numbers within 48 hours.",
+        path: "/contact",
+      }}
+    >
+      <PageHeader
+        kicker="Free · 30 minutes"
+        title={<>Get your free <span className="text-primary">Punch List</span></>}
+        intro="Book the call directly, or send me a few details first and I'll reach out. Either way, you leave with a written plan within 48 hours."
       />
-      <Navigation calendarLink={CALENDAR_LINK} />
-      <main className="pt-32">
-        <Contact calendarLink={CALENDAR_LINK} />
-      </main>
-      <Footer calendarLink={CALENDAR_LINK} />
-    </div>
+      <Contact />
+    </PageLayout>
   );
 }

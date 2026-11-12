@@ -1,10 +1,11 @@
 <!doctype html>
 <!--
-  /punch-list — standalone static landing page for "The Punch List" free 30-minute call.
+  /punch-list: standalone static landing page for "The Punch List" free 30-minute call.
   Static HTML (not a React route) so LinkedIn and other link-preview crawlers, which don't run
   JavaScript, can read the Open Graph tags below. Embeds the Zoho Calendar booking page.
   This URL is permanent: it is linked from LinkedIn Featured, DMs and email signatures.
-  If the page moves into the React app later, /punch-list must keep serving these OG tags.
+  Styled by hand to match the React site (Navigation, PageHeader, cards, Footer); if the site's
+  theme tokens in client/src/index.css change, mirror them in the :root block below.
 -->
 <html lang="en">
 <head>
@@ -13,6 +14,7 @@
   <title>The Punch List: Free 30-Minute Call | ConsultTech CRM</title>
   <meta name="description" content="A free 30-minute call: your top 3 issues, where you are vs. where you want to be, and a written plan in 48 hours. CRM for construction, manufacturing and automotive aftermarket businesses." />
   <link rel="canonical" href="https://consulttechcrm.com/punch-list" />
+  <link rel="icon" type="image/png" href="/favicon.png" />
 
   <meta property="og:type" content="website" />
   <meta property="og:site_name" content="ConsultTech CRM" />
@@ -27,95 +29,208 @@
 
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@700;800&family=Barlow:wght@400;500;600&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
 
   <style>
+    /* Mirrors the site's tokens in client/src/index.css */
     :root {
-      --orange: #FF9F33;
-      --cyan: #22C3DC;
-      --navy: #183F80;
-      --ink: #0a0f1c;
-      --text: #e8eef7;
-      --muted: #8fa3c0;
+      --background: hsl(0 0% 3%);
+      --foreground: hsl(210 40% 96%);
+      --card: hsl(0 0% 8%);
+      --border: hsl(0 0% 18%);
+      --muted: hsl(0 2% 75%);
+      --primary: hsl(32 100% 60%);
+      --cyan: hsl(190 100% 50%);
+      --radius: .5625rem;
+      --display: "Barlow Condensed", "Inter", sans-serif;
     }
     * { margin: 0; padding: 0; box-sizing: border-box; }
     body {
-      min-height: 100vh;
-      font-family: 'Barlow', system-ui, sans-serif;
-      color: var(--text);
-      background: radial-gradient(ellipse at 80% 0%, var(--navy) 0%, #0f1d38 45%, var(--ink) 100%) fixed;
+      font-family: "Inter", system-ui, sans-serif;
+      background: var(--background);
+      color: var(--foreground);
+      -webkit-font-smoothing: antialiased;
     }
-    body::before {
-      content: ""; position: fixed; inset: 0; pointer-events: none;
+    a { color: inherit; text-decoration: none; }
+    .container { max-width: 72rem; margin: 0 auto; padding: 0 1rem; }
+    @media (min-width: 640px) { .container { padding: 0 1.5rem; } }
+    @media (min-width: 1024px) { .container { padding: 0 2rem; } }
+
+    .kicker { font-size: .875rem; font-weight: 600; letter-spacing: .25em; text-transform: uppercase; color: var(--cyan); }
+    .safety-stripe { background: repeating-linear-gradient(-45deg, var(--primary) 0 18px, var(--background) 18px 36px); }
+    .blueprint-grid {
       background-image:
-        linear-gradient(rgba(34,195,220,.07) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(34,195,220,.07) 1px, transparent 1px);
+        linear-gradient(hsl(190 100% 50% / .07) 1px, transparent 1px),
+        linear-gradient(90deg, hsl(190 100% 50% / .07) 1px, transparent 1px);
       background-size: 96px 96px;
     }
-    .stripe { height: 8px; background: repeating-linear-gradient(-45deg, var(--orange) 0 18px, var(--ink) 18px 36px); }
-    .wrap { position: relative; max-width: 1120px; margin: 0 auto; padding: 24px 16px 48px; }
-    header a img { height: 44px; width: auto; display: block; }
-    .grid { display: grid; grid-template-columns: 1fr; gap: 32px; margin-top: 32px; }
-    @media (min-width: 900px) { .grid { grid-template-columns: 5fr 7fr; gap: 48px; margin-top: 48px; } }
-    .kicker { font-weight: 600; font-size: 15px; letter-spacing: 3px; text-transform: uppercase; color: var(--cyan); }
-    h1 {
-      font-family: 'Barlow Condensed', sans-serif; font-weight: 800; text-transform: uppercase;
-      font-size: clamp(52px, 9vw, 92px); line-height: .95; margin: 10px 0 18px; color: #fff;
+    .display { font-family: var(--display); font-weight: 800; text-transform: uppercase; color: #fff; }
+    .accent { color: var(--primary); }
+
+    .btn {
+      display: inline-flex; align-items: center; justify-content: center; gap: .5rem;
+      height: 2.25rem; padding: 0 1rem; border-radius: .375rem;
+      background: var(--primary); color: #fff; font-size: .875rem; font-weight: 600;
+      border: 1px solid hsl(32 100% 69%); white-space: nowrap;
     }
-    h1 span { color: var(--orange); }
-    .lead { font-size: 20px; line-height: 1.5; margin-bottom: 24px; }
-    ul { list-style: none; margin-bottom: 28px; }
-    li { font-size: 18px; line-height: 1.5; padding-left: 30px; position: relative; margin-bottom: 10px; }
-    li::before { content: "\2713"; position: absolute; left: 0; color: var(--orange); font-weight: 800; }
-    li strong { color: #fff; }
-    .note {
-      border-left: 4px solid var(--cyan); padding: 12px 16px; background: rgba(10,15,28,.55);
-      font-size: 16px; line-height: 1.5; color: var(--muted);
+    .btn:hover { filter: brightness(1.08); }
+    .btn svg { width: 1rem; height: 1rem; }
+
+    /* Navigation (matches components/Navigation.tsx, scrolled state) */
+    nav.site {
+      position: sticky; top: 0; z-index: 50;
+      background: hsl(0 0% 3% / .95); backdrop-filter: blur(4px); border-bottom: 1px solid var(--border);
     }
-    .note strong { color: var(--text); }
-    .cal {
-      background: #fff; border-radius: 10px; overflow: hidden;
-      box-shadow: 0 20px 60px rgba(0,0,0,.45); border-top: 6px solid var(--orange);
-    }
+    nav.site .row { display: flex; align-items: center; justify-content: space-between; gap: 1rem; height: 5rem; }
+    nav.site .logo img { height: 2.5rem; width: auto; display: block; }
+    nav.site .links { display: none; gap: 1.5rem; }
+    nav.site .links a { font-size: .875rem; font-weight: 500; color: var(--muted); transition: color .15s; }
+    nav.site .links a:hover { color: #fff; }
+    @media (min-width: 768px) { nav.site .links { display: flex; } }
+
+    /* Page header (matches components/PageHeader.tsx) */
+    header.page { position: relative; overflow: hidden; border-bottom: 1px solid var(--border); padding: 4rem 0; }
+    header.page .grid-bg { position: absolute; inset: 0; }
+    header.page .inner { position: relative; max-width: 56rem; margin: 0 auto; padding: 0 1rem; }
+    @media (min-width: 640px) { header.page .inner { padding: 0 1.5rem; } }
+    @media (min-width: 1024px) { header.page { padding: 6rem 0; } header.page .inner { padding: 0 2rem; } }
+    header.page h1 { font-size: clamp(3rem, 7vw, 4.5rem); line-height: .95; margin: .75rem 0 1.5rem; }
+    header.page p.intro { font-size: 1.125rem; line-height: 1.65; color: var(--muted); max-width: 48rem; }
+    @media (min-width: 1024px) { header.page p.intro { font-size: 1.25rem; } }
+    header.page .stripe { position: absolute; left: 0; right: 0; bottom: 0; height: 6px; }
+
+    /* Content */
+    main section.body { padding: 4rem 0; }
+    @media (min-width: 1024px) { main section.body { padding: 6rem 0; } }
+    .layout { display: grid; grid-template-columns: 1fr; gap: 2rem; }
+    @media (min-width: 1024px) { .layout { grid-template-columns: 5fr 7fr; } }
+    .card { border: 1px solid var(--border); background: var(--card); border-radius: var(--radius); padding: 1.5rem; }
+    .card + .card { margin-top: 1.5rem; }
+    .card.orange { border-color: hsl(32 100% 60% / .3); background: linear-gradient(to bottom right, hsl(32 100% 60% / .1), transparent); }
+    .card.cyan { border-color: hsl(190 100% 50% / .4); background: linear-gradient(to bottom right, hsl(190 100% 50% / .1), transparent); }
+    .card h2 { font-size: 1.125rem; font-weight: 600; color: #fff; margin-bottom: .75rem; }
+    .card p { font-size: .875rem; line-height: 1.65; color: var(--muted); }
+    ul.checks { list-style: none; display: grid; gap: .75rem; }
+    ul.checks li { display: flex; gap: .5rem; font-size: .875rem; line-height: 1.5; color: var(--muted); }
+    ul.checks li strong { color: var(--foreground); font-weight: 600; }
+    ul.checks svg { flex-shrink: 0; width: 1rem; height: 1rem; margin-top: .15rem; color: var(--primary); }
+
+    .cal { border: 1px solid var(--border); border-top: 6px solid var(--primary); border-radius: var(--radius); overflow: hidden; background: #fff; }
     .cal iframe { display: block; width: 100%; height: 760px; border: 0; }
-    .fallback { margin-top: 12px; font-size: 15px; color: var(--muted); text-align: center; }
-    a { color: var(--cyan); }
-    footer { margin-top: 48px; font-size: 14px; color: var(--muted); text-align: center; }
+    .fallback { margin-top: .75rem; font-size: .875rem; color: var(--muted); text-align: center; }
+    .fallback a { color: var(--primary); font-weight: 600; }
+    .fallback a:hover { text-decoration: underline; }
+
+    /* Footer (matches components/Footer.tsx) */
+    footer.site { border-top: 1px solid var(--border); background: linear-gradient(to bottom right, var(--background), hsl(32 100% 60% / .05)); }
+    footer.site .stripe { height: 6px; }
+    footer.site .cols { display: grid; gap: 2rem; padding: 3rem 0 0; }
+    @media (min-width: 768px) { footer.site .cols { grid-template-columns: repeat(3, 1fr); } }
+    footer.site .brand img { height: 3rem; width: auto; margin-bottom: 1rem; display: block; }
+    footer.site p { font-size: .875rem; line-height: 1.65; color: var(--muted); }
+    footer.site p + p { margin-top: .75rem; }
+    footer.site h2 { margin-bottom: 1rem; }
+    footer.site ul { list-style: none; display: grid; gap: .5rem; }
+    footer.site ul a { display: inline-flex; align-items: center; gap: .5rem; font-size: .875rem; color: var(--muted); transition: color .15s; }
+    footer.site ul a:hover { color: var(--primary); }
+    footer.site ul svg { width: 1rem; height: 1rem; }
+    footer.site .copy { border-top: 1px solid var(--border); margin-top: 2rem; padding: 2rem 0 3rem; text-align: center; font-size: .875rem; color: var(--muted); }
   </style>
 </head>
 <body>
-  <div class="stripe"></div>
-  <div class="wrap">
-    <header>
-      <a href="/" aria-label="ConsultTech CRM home"><img src="/punch-list/logo.png" alt="ConsultTech CRM" width="440" height="129" /></a>
+  <nav class="site" aria-label="Main">
+    <div class="container row">
+      <a href="/" class="logo" aria-label="ConsultTech CRM home"><img src="/punch-list/logo.png" alt="ConsultTech CRM" width="880" height="258" /></a>
+      <div class="links">
+        <a href="/">Home</a>
+        <a href="/how-it-works">How It Works</a>
+        <a href="/who-i-help">Who I Help</a>
+        <a href="/about">About</a>
+        <a href="/contact">Contact</a>
+      </div>
+      <a class="btn" href="#book">Book the Call
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+      </a>
+    </div>
+  </nav>
+
+  <main>
+    <header class="page">
+      <div class="grid-bg blueprint-grid" aria-hidden="true"></div>
+      <div class="inner">
+        <p class="kicker">Free &middot; 30 minutes</p>
+        <h1 class="display">The Punch <span class="accent">List</span></h1>
+        <p class="intro">You've got the plan. Let's figure out what it takes to build the system behind it. Pick a time below, and you'll have a written plan within 48 hours.</p>
+      </div>
+      <div class="stripe safety-stripe" aria-hidden="true"></div>
     </header>
 
-    <main class="grid">
-      <section>
-        <div class="kicker">Free &middot; 30 minutes</div>
-        <h1>The Punch <span>List</span></h1>
-        <p class="lead">You've got the plan. Let's figure out what it takes to build the system behind it.</p>
-        <ul>
-          <li><strong>Your top 3 issues</strong>: what's broken, slowing you down, or costing you money.</li>
-          <li><strong>Where you are vs. where you want to be.</strong></li>
-          <li><strong>Budget</strong>, so the plan fits your business, not mine.</li>
-          <li><strong>A written punch list within 48 hours</strong>: current state, goals, the right tools (Zoho or Salesforce), and what to expect.</li>
-        </ul>
-        <p class="note"><strong>Come ready to talk about what's broken.</strong> It's not a therapy session, but it might feel like one. No pressure, no pitch: just a straight look at whether we're the right fit.</p>
-      </section>
-
-      <section aria-label="Book your Punch List call">
-        <div class="cal">
-          <iframe
-            src="https://calendar.zoho.com/zc/view/slot-booking/0801123cf325bd78898d727509d147be00006304d56a29f78bbc45d47c480c77e394a6fe4fbe7cde830be8344a186eb1d14f3d291605fb31274568260b09ce62"
-            title="Book your Punch List call"
-            loading="lazy"></iframe>
+    <section class="body">
+      <div class="container layout">
+        <div>
+          <div class="card orange">
+            <h2>What we'll cover</h2>
+            <ul class="checks">
+              <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M21.8 10A10 10 0 1 1 17 3.3"/><path d="m9 11 3 3L22 4"/></svg><span><strong>Your top 3 issues:</strong> what's broken, slowing you down, or costing you money.</span></li>
+              <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M21.8 10A10 10 0 1 1 17 3.3"/><path d="m9 11 3 3L22 4"/></svg><span><strong>Where you are vs. where you want to be.</strong></span></li>
+              <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M21.8 10A10 10 0 1 1 17 3.3"/><path d="m9 11 3 3L22 4"/></svg><span><strong>Budget</strong>, so the plan fits your business, not mine.</span></li>
+              <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M21.8 10A10 10 0 1 1 17 3.3"/><path d="m9 11 3 3L22 4"/></svg><span><strong>A written punch list within 48 hours:</strong> current state, goals, the right tools (Zoho or Salesforce), and what to expect.</span></li>
+            </ul>
+          </div>
+          <div class="card cyan">
+            <h2>Come ready to talk about what's broken.</h2>
+            <p>It's not a therapy session, but it might feel like one. No pressure, no pitch: just a straight look at whether we're the right fit.</p>
+          </div>
+          <div class="card">
+            <h2>Not ready to book?</h2>
+            <p>Send me a few details first and I'll reach out. <a class="accent" href="/contact" style="font-weight:600">Send me the details &rarr;</a></p>
+          </div>
         </div>
-        <p class="fallback">Calendar not loading? <a href="https://calendar.zoho.com/zc/view/slot-booking/0801123cf325bd78898d727509d147be00006304d56a29f78bbc45d47c480c77e394a6fe4fbe7cde830be8344a186eb1d14f3d291605fb31274568260b09ce62" target="_blank" rel="noopener">Open the booking page</a>.</p>
-      </section>
-    </main>
 
-    <footer>ConsultTech CRM &middot; Army Combat Veteran owned &middot; <a href="/">consulttechcrm.com</a></footer>
-  </div>
+        <div id="book">
+          <div class="cal">
+            <iframe
+              src="https://calendar.zoho.com/zc/view/slot-booking/0801123cf325bd78898d727509d147be00006304d56a29f78bbc45d47c480c77e394a6fe4fbe7cde830be8344a186eb1d14f3d291605fb31274568260b09ce62"
+              title="Book your Punch List call"
+              loading="lazy"></iframe>
+          </div>
+          <p class="fallback">Calendar not loading? <a href="https://calendar.zoho.com/zc/view/slot-booking/0801123cf325bd78898d727509d147be00006304d56a29f78bbc45d47c480c77e394a6fe4fbe7cde830be8344a186eb1d14f3d291605fb31274568260b09ce62" target="_blank" rel="noopener">Open the booking page</a>.</p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site">
+    <div class="stripe safety-stripe" aria-hidden="true"></div>
+    <div class="container">
+      <div class="cols">
+        <div class="brand">
+          <img src="/punch-list/logo.png" alt="ConsultTech CRM" width="880" height="258" />
+          <p>CRM and sales systems for construction, manufacturing and automotive aftermarket businesses with 100 people or fewer.</p>
+          <p>Army Combat Veteran owned. Based in Tennessee, working with clients anywhere.</p>
+        </div>
+        <div>
+          <h2 class="kicker">Pages</h2>
+          <ul>
+            <li><a href="/">Home</a></li>
+            <li><a href="/how-it-works">How It Works</a></li>
+            <li><a href="/who-i-help">Who I Help</a></li>
+            <li><a href="/about">About</a></li>
+            <li><a href="/contact">Contact</a></li>
+          </ul>
+        </div>
+        <div>
+          <h2 class="kicker">Get started</h2>
+          <ul>
+            <li><a href="#book"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg>Book your Punch List</a></li>
+            <li><a href="/contact"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-10 5L2 7"/></svg>Send me the details</a></li>
+            <li><a href="https://www.linkedin.com/in/travisjdykstra" target="_blank" rel="noopener noreferrer"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-4 0v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>Follow me on LinkedIn</a></li>
+          </ul>
+        </div>
+      </div>
+      <p class="copy">&copy; <span id="year">2026</span> <span class="accent">ConsultTech CRM</span>. All rights reserved.</p>
+      <script>document.getElementById("year").textContent = new Date().getFullYear();</script>
+    </div>
+  </footer>
 </body>
 </html>

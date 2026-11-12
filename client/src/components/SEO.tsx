@@ -1,14 +1,17 @@
+/* Per-page <head> tags: title, description, canonical, Open Graph/Twitter card and optional JSON-LD. */
 import { Helmet } from "react-helmet-async";
+import { DEFAULT_OG_IMAGE, SITE_URL } from "@/lib/site";
 
-interface SEOProps {
+export interface SEOProps {
   title: string;
   description: string;
   path?: string;
+  image?: string;
+  jsonLd?: Record<string, unknown>;
+  noindex?: boolean;
 }
 
-const SITE_URL = "https://consulttechcrm.com";
-
-export default function SEO({ title, description, path = "" }: SEOProps) {
+export default function SEO({ title, description, path = "", image = DEFAULT_OG_IMAGE, jsonLd, noindex }: SEOProps) {
   const fullUrl = `${SITE_URL}${path}`;
   return (
     <Helmet>
@@ -19,6 +22,10 @@ export default function SEO({ title, description, path = "" }: SEOProps) {
       <meta property="og:description" content={description} />
       <meta property="og:url" content={fullUrl} />
       <meta property="og:type" content="website" />
+      <meta property="og:image" content={image} />
+      <meta name="twitter:card" content="summary_large_image" />
+      {noindex && <meta name="robots" content="noindex" />}
+      {jsonLd && <script type="application/ld+json">{JSON.stringify(jsonLd)}</script>}
     </Helmet>
   );
 }
