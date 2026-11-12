@@ -4,7 +4,7 @@ import { render, screen, within } from "@testing-library/react";
 import { renderAt } from "./render";
 import PunchListButton from "@/components/PunchListButton";
 import TalkFirstCard from "@/components/TalkFirstCard";
-import { BOOKING_URL, PUNCH_LIST_PATH, NAV_LINKS } from "@/lib/site";
+import { BOOKING_URL, PUNCH_LIST_PATH, NAV_LINKS, ZOHO_WEBFORM } from "@/lib/site";
 
 describe("harness", () => {
   it("renders the current home page", () => {
@@ -46,6 +46,7 @@ const PAGES = [
   { path: "/how-it-works", h1: /how it works/i },
   { path: "/who-i-help", h1: /who i help/i },
   { path: "/about", h1: /about travis/i },
+  { path: "/contact", h1: /get your free punch list/i },
 ];
 
 describe.each(PAGES)("page $path", ({ path, h1 }) => {
@@ -63,5 +64,33 @@ describe.each(PAGES)("page $path", ({ path, h1 }) => {
     expect(text).not.toMatch(/health check/i);
     expect(text).not.toMatch(/fractional salesforce/i);
     expect(container.querySelector('a[href*="calendar.app.google"]')).toBeNull();
+  });
+});
+
+describe("intake form (Zoho Web-to-Lead)", () => {
+  it("posts to Zoho with the webform tokens", () => {
+    const { container } = renderAt("/contact");
+    const form = container.querySelector("form")!;
+    expect(form).toHaveAttribute("action", ZOHO_WEBFORM.action);
+    expect(form).toHaveAttribute("method", "POST");
+    for (const [name, value] of Object.entries(ZOHO_WEBFORM.hidden)) {
+      expect(container.querySelector(`input[name="${name}"]`), name).toHaveValue(value);
+    }
+  });
+  it("sends every field under its Zoho name", () => {
+    const { container } = renderAt("/contact");
+    for (const name of ["First Name", "Last Name", "Email", "Company", "LEADCF7", "LEADCF8", "LEADCF9", "LEADCF10", "Description"]) {
+      expect(container.querySelector(`[name="${name}"]`), name).not.toBeNull();
+    }
+  });
+  it("shows the thank-you state after Zoho redirects back", () => {
+    window.history.pushState({}, "", "/contact?submitted=1");
+    renderAt("/contact");
+    expect(screen.getByText(/thank you/i)).toBeInTheDocument();
+    window.history.pushState({}, "", "/");
+  });
+  it("keeps the talk-first card on the contact page", () => {
+    renderAt("/contact");
+    expect(screen.getByRole("link", { name: /book a call/i })).toHaveAttribute("href", BOOKING_URL);
   });
 });
